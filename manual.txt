@@ -1,0 +1,54 @@
+Descrição
+---------
+
+O Marcas e Sinais é um software que auxilia o registro e consulta por marcas e sinais utilizados por produtores rurais.
+Desenvolvido pela Prefeitura Municipal de Bagé, o sistema foi criado a partir da dificuldade de armazenagem e problemas ocasionados pelo manuseio de registros físicos.
+O sistema é utilizado através da plataforma web, pois flexibiliza o acesso e facilita a atualização.
+
+
+Novidadades desta versão
+------------------------
+
+- Suporte ao SGBD MySQL
+- Proteção contra ataques via URL
+- Login protegido, script bloqueia senha automaticamente
+
+
+Requisitos de software
+----------------------
+
+Servidor web Apache 2.2.X ou superior
+PHP 5.2.X ou superior com as bibliotecas adicionais GD e MBSTRING
+MySQL: 5.1.x ou superior
+
+
+Instalação
+----------
+Instalar e configurar o servidor web Apache com suporte a linguagem PHP.
+
+Instalar as bibliotecas adicionais GD e MBSTRING no PHP.
+
+Instalar e configurar o servidor de banco de dados MySQL.
+
+Extrair o pacote cms_v2.zip para o diretório “DocumentRoot” do Apache.
+
+Importar o arquivo cms_v2.sql para o MySQL.
+
+Edite o arquivo "parametros.php" e realize as alterações nos valores das variáveis de acordo com os nomes do município.
+
+Edite o arquivo "conecta.php" e realize as alterações nos valores das variáveis de acordo com a sua configuração do banco de dados, o usuário padrão é "root" e senha "".
+
+A cada 10 tentativas de login, o sistema bloqueia o acesso do usuário. Caso isto aconteça, basta o administrador alterar a coluna "Tentativas" para "0" no banco de dados.
+
+Por questões de segurança, nos campos login e senha são permitidos somente números.
+
+
+Acesso ao sistema
+-----------------
+
+Acessar o sistema pelo navegador através do nome ou IP do servidor.
+
+A tela inicial sollicita que o usuário realize uma autenticação de usuário e senha. Inicialmente o sistema pode ser acessado pelo usuário “123” e senha “123”.
+
+Existe a possibilidade de utilização do sistema somente para visualização, para isto deve-se clicar no link “consulta”.
+

@@ -1,0 +1,90 @@
+1 - CRIAR CAMPOS{
+    -> Criar campo prazo de validade marca [Create]
+    -> Criar campo prazo de validade sinal [Create]
+    -> Criar campo observação para marca [Create]
+    -> Criar campo observação para sinal [Create]
+    
+    -> Criar campo prazo de validade marca [Update]
+    -> Criar campo prazo de validade sinal [Update]
+    -> Criar campo observação para marca [Update]
+    -> Criar campo observação para sinal [Update]
+    -> Criar campo prazo de validade sinal [Update]
+
+    -> Criar campo prazo de validade marca [Delete]
+    -> Criar campo prazo de validade sinal [Delete]
+    -> Criar campo observação para marca [Delete]
+    -> Criar campo observação para sinal [Delete]
+}
+
+2 - ALTERAR CAMPOS {
+    -> Quantidade exibir todos
+    -> Alterar campo de incrição estadual => livro/pagina 
+}
+
+
+3 - CERTIFICADO DOS SINAIS{
+    -> Adicionar campo descrição =>PARA MARCA
+    -> Adicionar ultima atualização
+}
+
+3 - CERTIFICADO DAS  MARCAS{
+    -> Não precisa exibir observação
+    -> Adicionar ultima atualização
+}
+
+4- PERFIL MARCA/SINAL {
+    -> Adicionar informação ultima atualização
+    -> Adicionar data de validade para (10 ANOS)
+    -> "Este certificado é valido até 11/05/2032"
+}
+
+5- CADASTRO DO PRODUTOR {
+    -> Adicionar um campo para RG's (+ de 1)
+    -> Adicionar um campo para cpfs (+ de 1)
+}
+
+VERFICADO -> {
+    MARCAS [100]{
+        + INCLUIR
+        + EXCLUIR
+        + DETALHE
+        + EDITAR
+    }
+    SINAIS [100]{
+        + INCLUIR
+        + EXLUIR
+        + DETALHE
+        + EDITAR
+    }
+    PRODUTORES [100]{
+        + INCLUIR
+        + DETALHE
+        + EXCLUIR
+        + EDITAR
+    }
+    LOCALIDADES [00]{
+        
+    }
+}
+
+DONE -> {
+    MARCA [CRIAR]
+    MARCA [ATUALIZAR]
+    MARCA [VISUALIZAR]
+    MARCA [DELETAR]
+
+    SINAL [CRIAR]
+    SINAL [ATUALIZAR]
+    SINAL [VISUALIZAR]
+    SINAL [DELETAR]
+
+    PRODUTOR [CRIAR]
+    PRODUTOR [ATUALIZAR]
+    PRODUTOR [VISUALIZAR]
+    PRODUTOR [DELETAR]
+
+    LOCALIDADE [CRIAR]
+    LOCALIDADE [ATUALIZAR]
+    LOCALIDADE [VISUALIZAR]
+    LOCALIDADE [DELETAR]
+}
