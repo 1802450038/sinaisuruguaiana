@@ -1,4 +1,4 @@
-        </td>
+        <!-- </td>
     </tr>
 </table>
 <table width="787" cellspacing="0" cellpadding="0" border="0" align="center">
@@ -29,4 +29,16 @@
 <img src="imagens/pmb_nada.gif" width="10" height="5" border="0">
 
 </body>
+</html> -->
+
+
+</body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js " integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
+<script>
+    function valida_exc() {
+        var retorno = confirm('Confirma exclusao da localidade?');
+
+        return (retorno);
+    }
+</script>

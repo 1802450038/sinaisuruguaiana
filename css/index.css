@@ -31,8 +31,16 @@ body {
     justify-content: center;
 }
 
-.header .pmu-logo img {
+.header .pmu-logo {
     height: 60%;
+}
+
+.header .pmu-logo img.logo {
+    height: 80%;
+}
+
+.header .pmu-logo img.logo-mobile {
+    display: none;
 }
 
 .header .sinais-logo {
@@ -446,32 +454,6 @@ body {
     .body {
         width: 90%;
     }
-    /* .card {
-        display: flex;
-        flex-direction: row;
-        width: 460px;
-        height: 260px;
-        position: relative;
-        overflow: hidden;
-    }
-    .card-img {
-        position: absolute;
-        background-color: gainsboro;
-        width: 180px !important;
-        height: 210px !important;
-    }
-    .card-bottom {
-        width: 100%;
-    }
-    .card-title {
-        width: 260px;
-        margin-left: 180px;
-    }
-    .card-items {
-        width: 270px;
-        margin-left: 180px;
-        padding-top: 6px;
-    } */
     .form-body .form-item {
         height: 60px !important;
     }
@@ -495,5 +477,14 @@ body {
     .form-body .form-item .form-item-input .form-item-input-text {
         width: 100% !important;
         height: 30px !important;
+    }
+
+    .header .pmu-logo img.logo {
+        display: none;
+    }
+
+    .header .pmu-logo img.logo-mobile {
+        display: block;
+        height: 100%;
     }
 }

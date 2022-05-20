@@ -3,27 +3,28 @@ session_start();
 if(file_exists("init.php")){
         require_once "init.php";
 } else {
-        die("Arquivo de init não encontrado");
+        die("Arquivo de init nï¿½o encontrado");
 }
 require_once('pmb_conecta.php');
 function limpa($var){
         $var = trim($var);
-		//verifica se é número
+		//verifica se ï¿½ nï¿½mero
         if(!is_numeric($var)){		
 		$var = 0;		
 		}
 	   return $var;
 }
 
+
 if(getenv("REQUEST_METHOD") == "POST"){
         $login  = isset($_POST["login"]) ? limpa($_POST["login"]) : "";
         $senha = isset($_POST["senha"]) ? limpa($_POST["senha"]) : "";
-		
+		$senha = md5($senha);
 				 
-			$re = $db->query("select * from cms_usuarios where login = '$login' and senha = md5('$senha') and tentativas < '11'");
+			$re = $db->query("select * from cms_usuarios where login = '$login' and senha = '$senha' and tentativas < '11'");
 			$resultado = $db->fetchArray($re);	
 
-                //se o usuário não estiver bloqueado (tentativas maior que 10)
+                //se o usuï¿½rio nï¿½o estiver bloqueado (tentativas maior que 10)
 				if($resultado){
                         $dados           = array();
                         $dados["login"]   = $login;

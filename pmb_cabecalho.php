@@ -46,7 +46,7 @@ switch ($_GET['erro']) {
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/form.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
-	<title>Sinais Cadastrar</title>
+	<title>Marcas e sinais</title>
 </head>
 
 <body>
@@ -100,6 +100,7 @@ switch ($_GET['erro']) {
                 </li>
                 <li class="mobile-item">
                     <a href="pmb_sinal.php" class="nav-link"> <i class="nav-ico fas fas fa-signature"> </i> <span>SINAIS</span></a>
+                    <!-- <a href="pmb_sinal.php" class="nav-link"> <i class="nav-ico fas fas fa-signature"> </i> <span>SINAIS</span></a> -->
                 </li>
                 <li class="mobile-item">
                     <a href="pmb_produtor.php" class="nav-link"> <i class="nav-ico fas fas fa-users-between-lines"> </i> <span>PRODUTORES</span></a>

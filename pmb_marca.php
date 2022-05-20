@@ -1,57 +1,80 @@
 <?php
-if (isset($_GET['erro'])) {
-    switch ($_GET['erro']) {
-        case 1: //salva com sucesso
-            echo '<script language="Javascript">
+if (file_exists("init.php")) {
+    require_once "init.php";
+} else {
+    die("Arquivo de init não encontrado");
+}
+require_once('pmb_conecta.php');
+require_once "seguranca.php";
+
+$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
+
+require_once('pmb_cabecalho.php');
+
+switch ($_GET['erro']) {
+    case 1: //salva com sucesso
+        echo '<script language="Javascript">
             alert("Marca salva com sucesso!");
           </script>';
-            break;
-        case 2: //erro ao salvar
-            echo '<script language="Javascript">
+        break;
+    case 2: //erro ao salvar
+        echo '<script language="Javascript">
             alert("Marca nao pode ser salva!");
           </script>';
-            break;
-        case 3: //excluida com sucesso
-            echo '<script language="Javascript">
+        break;
+    case 3: //excluida com sucesso
+        echo '<script language="Javascript">
             alert("Marca excluida com sucesso!");
           </script>';
-            break;
-        case 4: //erro ao excluir
-            echo '<script language="Javascript">
+        break;
+    case 4: //erro ao excluir
+        echo '<script language="Javascript">
             alert("Marca nao pode ser excluida!");
           </script>';
-            break;
-        case 5: //imagem duplicada
-            echo '<script language="Javascript">
+        break;
+    case 5: //imagem duplicada
+        echo '<script language="Javascript">
             alert("Ja existe uma marca com este nome de arquivo!");
           </script>';
-            break;
-        case 6: //formato invalido
-            echo '<script language="Javascript">
+        break;
+    case 6: //formato invalido
+        echo '<script language="Javascript">
             alert("Formato de arquivo invalido!");
           </script>';
-            break;
-        case 7: //formato invalido
-            echo '<script language="Javascript">
+        break;
+    case 7: //formato invalido
+        echo '<script language="Javascript">
             alert("Imagem excedeu o tamanho maximo! (1MB)");
           </script>';
-            break;
-    }
+        break;
 }
-require_once('pmb_cabecalho.php');
 ?>
+
+<script>
+    function valida_exc() {
+        var retorno = confirm('Confirma exclusao da marca?');
+
+        return (retorno);
+    }
+
+    function acao(posicao) {
+        formulario.action = 'pmb_marca.php?posicao=' + posicao;
+
+    }
+</script>
+
 <div class="body">
     <div class="body-title">
-        <h2>Sinais</h2>
+        <h2>Marcas</h2>
     </div>
     <div class="body-content">
         <div class="action-bar">
             <!-- form -->
             <div class="form-action">
                 <div class="action-bar-label">
-                    Selecione para adicionar um sinal
+                    Selecione para adicionar uma marca
                 </div>
-                <button class="action-bar-button" value="Incluir Marca" onClick="location.href='/marca_editar.php'">Adicionar sinal</button>
+                <button class="action-bar-button" value="Incluir Marca" onClick="location.href='/pmb_marca_editar.php'">Adicionar marca</button>
             </div>
         </div>
         <div class="search-bar">
@@ -270,7 +293,7 @@ require_once('pmb_cabecalho.php');
                                     </div>
                                     <div class='card-bottom'>
                                         <div class='card-title'>
-                                            <div class='title-type'>Sinal</div>
+                                            <div class='title-type'>Marca</div>
                                             <div class='title-number'>
                                                 {$idmarca}
                                             </div>
@@ -319,14 +342,7 @@ require_once('pmb_cabecalho.php');
     </div>
 </div>
 </div>
-
 </div>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js " integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
-<script>
-    function valida_exc() {
-        var retorno = confirm('Confirma exclusao da localidade?');
-
-        return (retorno);
-    }
-</script>
+<?php
+    require_once "pmb_rodape.php";
+?>

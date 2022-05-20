@@ -49,8 +49,17 @@ if ($_GET){
 		</script>';
 	}
 }
-?>
 
+
+
+// //se o usu�rio n�o estiver bloqueado (tentativas maior que 10)
+// if($resultado){
+// 		$dados           = array();
+// 		$dados["login"]   = $login;
+// 		$_SESSION['login'] = $dados["login"];
+// 		$dados["senha"] = $senha;                       
+// 		$_SESSION["dados"] = $dados; 
+?>
 <form action="pmb_login.php" method="post" name="formulario">
     <table border="0" width="100%" height="100%"><tr><td align="center" valign="center">
     <table border=0>
