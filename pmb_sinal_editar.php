@@ -1,55 +1,42 @@
 <?php
-if (file_exists("init.php")) {
-	require_once "init.php";
-} else {
-	die("Arquivo de init n�o encontrado");
-}
-// require_once('pmb_conecta.php');
-// require_once "seguranca.php";
-// require('pmb_cabecalho.php');
-$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
 
-// require_once('pmb_cabecalho.php');
+require_once('pmb_cabecalho.php');
 
-// @GB
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];
-	$sql = "select idlocalidade, idprodutor, numero, observacao, ch_numero, ch_letra, ch_figura, caminho from cms_marcas where idmarca = " . $id;
-	// $result = pg_query($conect, $sql)
+	$sql = "select idlocalidade, idprodutor, observacao, numero, caminho from cms_sinais where idsinal = " . $id;
+	//$result = pg_query($conect, $sql)
 	//or die("Nao foi possivel conectar no banco de dados!");
+
 	$sql = $db->query($sql);
 
-	// $linha = pg_fetch_array ( $result );
+	//$linha = pg_fetch_array ( $result );
 	$linha = $db->fetchArray($sql);
 	$local = $linha['idlocalidade'];
 	$produtor = $linha['idprodutor'];
 	$numero = $linha['numero'];
-	$observacao = $linha['observacao'];
-	$ch_numero = $linha['ch_numero'];
-	$ch_letra = $linha['ch_letra'];
-	$ch_figura = $linha['ch_figura'];
 	$caminho = $linha['caminho'];
+	$observacao = $linha['observacao'];
 } else {
 	$id = "";
 	$local = "";
 	$produtor = "";
-	$ch_numero = "";
-	$observacao = "";
-	$ch_letra = "";
-	$ch_figura = "";
 	$caminho = "";
+	$observacao = "";
 }
 
 
 ?>
 
+
+
 <div class="body">
 	<div class="body-title">
-		<h2>Cadastrar Marca</h2>
+		<h2>Cadastrar Sinal</h2>
 	</div>
 	<div class="body-content">
 		<div class="search-bar">
-			<form action="pmb_marca_salvar.php" enctype="multipart/form-data" method="post" name="formulario" onSubmit="return validadados()">
+			<form action="pmb_sinal_salvar.php" enctype="multipart/form-data" method="post" name="formulario" onSubmit="return validadados()">
 				<div class="form-body">
 					<input type="hidden" name="id" value="<?php echo $id; ?>">
 					<div class="form-item">
@@ -161,16 +148,6 @@ if (isset($_GET['id'])) {
 								<label for="numero">Numero</label>
 								<input name="numero" id="numero" type="checkbox" class="checkmark">
 							</div>
-
-							<div class="checkgroup">
-								<label for="letra">Letra</label>
-								<input name="letra" id="letra" type="checkbox" class="checkmark">
-							</div>
-
-							<div class="checkgroup">
-								<label for="figura">Figura</label>
-								<input name="figura" id="figura" type="checkbox" class="checkmark">
-							</div>
 						</div>
 					</div>
 					<div class="form-item">
@@ -204,3 +181,12 @@ if (isset($_GET['id'])) {
 </script>
 
 </html>
+
+
+
+
+
+
+
+
+

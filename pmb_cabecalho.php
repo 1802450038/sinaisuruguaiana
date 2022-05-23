@@ -112,7 +112,7 @@ switch ($_GET['erro']) {
                     <a href="pmb_senha_alterar.php" class="nav-link"> <i class="nav-ico fab fa-expeditedssl"></i> <span>SENHA</span></a>
                 </li>
                 <li class="mobile-item">
-                    <a href="pmb_logoff.php" class="nav-link"> <i class="nav-ico fas fa-door-opens"> </i> <span>SAIR</span></a>
+                    <a href="pmb_logoff.php" class="nav-link"> <i class="nav-ico fas fa-door-open"> </i> <span>SAIR</span></a>
                 </li>
             </ul>
         </div>
