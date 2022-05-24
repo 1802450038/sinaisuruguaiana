@@ -1,0 +1,490 @@
+div {
+    /* box-shadow: 0px 0px 1px red; */
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(233, 242, 232);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 30vh;
+}
+
+.header {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.header .pmu-logo {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .pmu-logo {
+    height: 60%;
+}
+
+.header .pmu-logo img.logo {
+    height: 80%;
+}
+
+.header .pmu-logo img.logo-mobile {
+    display: none;
+}
+
+.header .sinais-logo {
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.header .sinais-logo img {
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.menu-toogle {
+    left: 0px;
+    width: 120px;
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    height: 50px;
+    display: none;
+}
+
+.menu-toogle .menu-trigger {
+    display: none;
+    /* background-color: red; */
+    width: 100%;
+    border: none;
+    text-align: right;
+    padding-right: 30px;
+    font-size: 16pt;
+}
+
+.nav-margin {
+    width: 260px;
+}
+
+.nav {
+    width: 260px;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all .3s ease-in-out;
+    position: fixed;
+}
+
+.nav .nav-title {
+    width: 100%;
+    text-align: center;
+    font-size: 22pt;
+    color: rgb(130, 196, 130);
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.nav ul li {
+    border: 1px solid rgb(103, 179, 103);
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
+}
+
+.nav ul li a {
+    padding: 15px 15px;
+    cursor: pointer;
+    width: 100%;
+    color: rgb(103, 179, 103);
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+
+.nav ul li a:hover {
+    padding: 15px 15px;
+    cursor: pointer;
+    width: 100%;
+    background-color: rgb(103, 179, 103);
+    color: white;
+    text-decoration: none;
+}
+
+.nav-mobile {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: flex;
+    background-color: rgb(103, 179, 103);
+    border-radius: 5px;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+}
+
+.nav-mobile .mobile-body {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 10px;
+    margin: 0;
+    padding: 0;
+    padding: 15px 10px;
+}
+
+.nav-mobile .mobile-body .nav-link {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: rgb(130, 196, 130);
+}
+
+.nav-mobile .mobile-body a {
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    row-gap: 5px;
+}
+
+.nav-mobile .mobile-body .nav-ico {
+    font-size: 18pt;
+    transform: translateY(5px);
+}
+
+.nav-mobile .mobile-body .nav-link span {
+    transform: translateY(12px);
+    font-size: 5pt;
+}
+
+.body {
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.body-title h2 {
+    color: rgb(103, 179, 103);
+    font-size: 25pt;
+}
+
+.body-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.body-content .action-bar {
+    width: 100%;
+    border: 1px solid rgb(130, 196, 130);
+    border-radius: 5px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-content .form-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.body-content .form-action .action-bar-label {
+    width: 60%;
+    height: 30px;
+    font-size: 13pt;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: rgb(103, 179, 103);
+}
+
+.body-content .form-action .action-bar-button {
+    width: 40%;
+    height: 40px;
+    background-color: white;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: rgb(130, 196, 130);
+    border: none;
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+}
+
+.body-content .form-action .action-bar-button:hover {
+    background-color: rgb(81, 142, 81);
+}
+
+.body-content .search-bar {
+    padding-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    border: 1px solid rgb(130, 196, 130);
+    border-radius: 5px;
+}
+
+.content-area {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    border: 1px solid rgb(130, 196, 130);
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+}
+
+.card-row {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    justify-content: space-around;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(130, 196, 130);
+    border-radius: 5px;
+    width: 280px;
+    box-shadow: 0px 0px 30px 10px rgba(103, 179, 103, 0.133);
+}
+
+.card .card-img {
+    background-color: rgb(207, 207, 207);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 200px;
+}
+
+.card .card-img img {
+    width: 100%;
+}
+
+.card .card-title {
+    font-size: 16pt;
+    padding-top: 10px;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .card-title .title-type {
+    color: rgb(103, 179, 103);
+    text-transform: uppercase;
+    padding: 5px 0px;
+}
+
+.card .card-title .title-number {
+    padding: 5px 10px;
+    background-color: rgb(103, 179, 103);
+    border-radius: 5px;
+    color: white;
+}
+
+.card .card-items {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.card .card-items .item {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.card .card-items .item .item-name {
+    color: rgb(81, 142, 81);
+    font-weight: bold;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 10pt;
+}
+
+.card .card-items .item .item-value {
+    color: rgb(103, 179, 103);
+    padding-right: 5px;
+    padding-bottom: 5px;
+    font-size: 12pt;
+}
+
+.card-actions {
+    display: flex;
+    background-color: rgb(103, 179, 103);
+    flex-direction: row;
+    padding: 10px;
+    font-size: 16pt;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.card-actions .action {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-actions .action a {
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+}
+
+.card-actions .action a:hover {
+    background-color: rgb(130, 196, 130);
+    box-shadow: 0px 0px 0px 2px rgb(130, 196, 130);
+}
+
+.paginator {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    border: 1px solid rgb(130, 196, 130);
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.paginator .paginator-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    column-gap: 10px;
+}
+
+.paginator .paginator-row a {
+    border: 1px solid rgb(103, 179, 103);
+    padding: 15px;
+    border-radius: 10px;
+    color: rgb(103, 179, 103);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all .3s ease-in-out;
+}
+
+.paginator .paginator-row a:hover {
+    background-color: rgb(103, 179, 103);
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    .body {
+        width: 90%;
+    }
+    .nav,
+    .nav-margin {
+        display: none;
+    }
+    .nav-mobile {
+        display: flex;
+    }
+}
+
+@media (max-width: 860px) {
+    .body {
+        width: 80%;
+    }
+}
+
+@media (max-width: 680px) {
+    .body {
+        width: 90%;
+    }
+    .form-body .form-item {
+        height: 60px !important;
+    }
+    .form-body .form-item .form-item-input {
+        flex-direction: column !important;
+    }
+    .form-body .form-item .form-item-input-label {
+        width: 100%;
+    }
+    .form-body .form-item .form-item-input select {
+        width: 100%;
+        height: 30px;
+    }
+    .form-body .form-item .form-item-input .file-input {
+        width: 100% !important;
+        height: 30px !important;
+    }
+    .checkgroup label {
+        font-size: 10pt;
+    }
+    .form-body .form-item .form-item-input .form-item-input-text {
+        width: 100% !important;
+        height: 30px !important;
+    }
+
+    .header .pmu-logo img.logo {
+        display: none;
+    }
+
+    .header .pmu-logo img.logo-mobile {
+        display: block;
+        height: 100%;
+    }
+}

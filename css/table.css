@@ -1,0 +1,80 @@
+
+.content .form-body {
+    display: flex;
+    width: 100%;
+    /* padding: 10px; */
+}
+
+.form-body table {
+    padding: 10px;
+    border-spacing: 10px;
+}
+
+.form-body table thead {
+    text-align: center;
+    padding: 10px 0px;
+}
+.form-body table thead th{ 
+    height: 40px;
+    background-color: rgb(81, 142, 81);
+    border-radius: 10px;
+    color: white;
+}
+
+.form-body table tbody {
+    height: 40px;
+}
+.form-body table tbody tr{
+    height: 50px;
+    padding-top: 10px !important;
+}
+.form-body table tbody tr td{
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgb(192, 192, 192);
+    color: rgb(95, 95, 95);
+}
+
+
+.form-body table tbody tr:hover{
+    background-color: rgb(155, 155, 155);
+}
+
+.form-body table tbody tr:hover td{
+    color: white;
+}
+.form-body table tbody td:hover {
+    background-color: rgb(192, 192, 192);
+    color: white;
+}
+
+.form-body table tbody  td .actions{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-body table tbody  td .actions a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+    
+}
+
+.edit {
+    background-color: rgb(113, 199, 113);
+}
+
+.view {background-color: rgb(110, 137, 255);}
+
+.delete {
+    background-color: rgb(255, 124, 124);
+
+}
