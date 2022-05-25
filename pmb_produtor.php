@@ -1,14 +1,4 @@
 <?php
-if (file_exists("init.php")) {
-    require_once "init.php";
-} else {
-    die("Arquivo de init não encontrado");
-}
-require_once('pmb_conecta.php');
-require_once "seguranca.php";
-
-$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
-
 require_once('pmb_cabecalho.php');
 
 
@@ -65,8 +55,10 @@ switch ($_GET['erro']) {
                         <div class="form-item-input">
                             <label class="form-item-input-label" for="observacao">Nome</label>
                             <?php
-                            if ($nome) {
-                                echo ("<input name='nome' id='nome' type='text' class='form-item-input-text' value='$nome'>");
+                            if (isset($_POST['nome']) && strlen($_POST['nome']) > 0) {
+                                echo ("<input name='nome' id='nome' type='text' class='form-item-input-text' value=" . $_POST['nome'] . ">");
+                            } else if (isset($_GET['nome']) && strlen($_GET['nome']) > 0) {
+                                echo ("<input name='nome' id='nome' type='text' class='form-item-input-text' value=" . $_GET['nome'] . ">");
                             } else {
                                 echo ("<input name='nome' id='nome' type='text' class='form-item-input-text'>");
                             }
@@ -108,7 +100,7 @@ switch ($_GET['erro']) {
                 <?php
                 $page = (isset($_GET['page']) ? (int)$_GET['page'] : 1);
 
-                $itemsPerPage =  21;
+                $itemsPerPage =  20;
 
                 if (isset($_POST['quantity'])) {
                     $itemsPerPage = (int)$_POST['quantity'];
@@ -116,26 +108,20 @@ switch ($_GET['erro']) {
                     $itemsPerPage = (int)$_GET['quantity'];
                 }
 
-
-
                 $search = "nome";
                 $term = "";
 
-
-
-                if ($_POST['produtor']) {
-                    $search = "-idprodutor";
-                    $term =  (int)$_POST['produtor'];
+                if (isset($_POST['nome'])) {
+                    $term = $_POST['nome'];
+                } else if (isset($_GET['nome'])) {
+                    $term = $_GET['nome'];
                 }
-
-
 
                 $start = ($page - 1) * $itemsPerPage;
 
-
                 $query = "SELECT SQL_CALC_FOUND_ROWS idprodutor, nome
                         FROM cms_produtores
-                        WHERE $search LIKE '%$term%' ORDER BY nome LIMIT $start, $itemsPerPage";
+                        WHERE $search LIKE '$term%' ORDER BY nome LIMIT $start, $itemsPerPage";
 
                 $rows = "SELECT FOUND_ROWS() AS nrtotal;";
 
@@ -157,7 +143,7 @@ switch ($_GET['erro']) {
                             'page' => $i,
                             'quantity' => $itemsPerPage,
                             'search' => $search,
-                            'term' => $term
+                            'nome' => $term
 
                         ]),
                         'text' => $i
@@ -183,9 +169,9 @@ switch ($_GET['erro']) {
                              <td>{$nome}</td>
                              <td>
                                  <div class='actions'>
-                                     <a href='#' class='edit'><span class='fas fa-pen-to-square'></span></a>
-                                     <a href='#' class='view'><span class='fas fa-eye'></span></a>
-                                     <a href='#' class='delete'><span class='fas fa-trash-can'></span></a>
+                                     <a href='pmb_produtor_editar.php?id=$idprodutor' class='edit'><span class='fas fa-pen-to-square'></span></a>
+                                     <a href='pmb_produtor_detalhe.php?id=$idprodutor' class='view'><span class='fas fa-eye'></span></a>
+                                     <a href='pmb_produtor_excluir.php?id=$idprodutor' class='delete'><span class='fas fa-trash-can'></span></a>
                                  </div>
                              </td>
                          </tr>

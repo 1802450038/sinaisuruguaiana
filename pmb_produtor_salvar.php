@@ -2,7 +2,7 @@
 if(file_exists("init.php")){
         require_once "init.php";
 } else {
-        die("Arquivo de init não encontrado");
+        die("Arquivo de init nï¿½o encontrado");
 }
 require_once('pmb_conecta.php');
 require_once "seguranca.php";
@@ -28,9 +28,9 @@ if ((!isset($_POST['id'])) || ($_POST['id'] == ''))
     values ($localidade, '$nome', '$cpf', '$ie', '$endereco', '$telefone', NOW())";
 
     if ($sql = $db->query($sql))
-	header("Location: pmb_cms_produtor.php?erro=1");
+	header("Location: pmb_produtor.php?erro=1");
     else
-	header("Location: pmb_cms_produtor.php?erro=2");
+	header("Location: pmb_produtor.php?erro=2");
 }
 else
 {
@@ -39,9 +39,9 @@ else
     ie = '$ie', endereco = '$endereco', telefone = '$telefone' where idprodutor = $id";
     
     if ($sql = $db->query($sql))
-    	header("Location: pmb_cms_produtor.php?erro=1");
+    	header("Location: pmb_produtor.php?erro=1");
     else
-        header("Location: pmb_cms_produtor.php?erro=2");
+        header("Location: pmb_produtor.php?erro=2");
 }
 
 ob_flush();
