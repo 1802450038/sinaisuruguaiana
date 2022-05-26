@@ -52,7 +52,8 @@ switch ($_GET['erro']) {
 ?>
 
 <script>
-	function valida_exc() {
+	function valida_exc_sinal() {
+		console.log("tadala felas");
 		var retorno = confirm('Confirma exclusao do sinal?');
 
 		return (retorno);
@@ -93,15 +94,17 @@ switch ($_GET['erro']) {
 								echo "<option value='' selected>Todas</option>";
 								while ($linha = $db->fetchArray($sql)) {
 
-									if (isset($_POST['localidade'])) {
+									if (strlen($_POST['localidade']) >0) {
 										if ($linha['idlocalidade'] == $_POST['localidade']) {
 											echo "<option value=" . $linha['idlocalidade'] . " selected>" . $linha['localidade'] . "</option>";
 										} else {
 											echo "<option value=" . $linha['idlocalidade'] . ">" . $linha['localidade'] . "</option>";
 										}
-									} else if (isset($_GET['localidade'])) {
+									} else if (strlen($_GET['localidade']) >0) {
 										if ($linha['idlocalidade'] == $_GET['localidade']) {
 											echo "<option value=" . $linha['idlocalidade'] . " selected>" . $linha['localidade'] . "</option>";
+										}else {
+											echo "<option value=" . $linha['idlocalidade'] . ">" . $linha['localidade'] . "</option>";
 										}
 									} else {
 										echo "<option value=" . $linha['idlocalidade'] . ">" . $linha['localidade'] . "</option>";
@@ -121,13 +124,22 @@ switch ($_GET['erro']) {
 								$sql = $db->query($sql);
 								echo "<option value='' selected>Todos</option>";
 								while ($linha = $db->fetchArray($sql)) {
-									if (isset($_POST['produtor']))
-										if ($linha['idprodutor'] == $_POST['produtor'])
+
+									if (strlen($_POST['produtor']) > 0) {
+										if ($linha['idprodutor'] == $_POST['produtor']) {
 											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
-										else
+										} else {
 											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
-									else
+										}
+									} else if (strlen($_GET['produtor'])>0) {
+										if ($linha['idprodutor'] == $_GET['produtor']) {
+											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
+										}else {
+											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+										}
+									} else {
 										echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+									}
 								}
 								?>
 							</select>
@@ -182,21 +194,24 @@ switch ($_GET['erro']) {
 				}
 
 
-
-				$search = "s.idsinal";
-				$term = "";
-
-
-
-
-				if ($_POST['localidade']) {
-					$search = "l.idlocalidade";
+				if (strlen($_POST['localidade']) > 0) {
 					$term =  (int)$_POST['localidade'];
+					$search = "l.idlocalidade";
+					$localidade = $term;
+				} else if (strlen($_GET['localidade']) > 0) {
+					$term =  (int)$_GET['localidade'];
+					$search = "l.idlocalidade";
+					$localidade = $term;
 				}
 
-				if ($_POST['produtor']) {
-					$search = "m.idprodutor";
+				if (strlen($_POST['produtor'])) {
 					$term =  (int)$_POST['produtor'];
+					$search = "p.idprodutor";
+					$produtor = $term;
+				}else if (strlen($_GET['produtor']) > 0) {
+					$term =  (int)$_GET['produtor'];
+					$search = "p.idprodutor";
+					$produtor = $term;
 				}
 
 
@@ -208,7 +223,7 @@ switch ($_GET['erro']) {
                         FROM cms_sinais s
                         LEFT JOIN cms_localidades l ON l.idlocalidade = s.idlocalidade
                         LEFT JOIN cms_produtores p ON p.idprodutor = s.idprodutor
-                        WHERE $search LIKE '%$term%' ORDER BY p.nome, s.numero LIMIT $start, $itemsPerPage";
+                        WHERE s.idprodutor LIKE '%$term%' ORDER BY p.nome, s.numero LIMIT $start, $itemsPerPage";
 
 				$rows = "SELECT FOUND_ROWS() AS nrtotal;";
 
@@ -229,9 +244,8 @@ switch ($_GET['erro']) {
 						'link' => '/pmb_sinal.php?' . http_build_query([
 							'page' => $i,
 							'quantity' => $itemsPerPage,
-							'search' => $search,
-							'term' => $term
-
+							'localidade' => $localidade,
+							'produtor' => $produtor
 						]),
 						'text' => $i
 					]);
@@ -248,7 +262,7 @@ switch ($_GET['erro']) {
 
 					echo "<div class='card'>
                                     <div class='card-img'>
-                                        <a href= 'pmb_cms_sinal_detalhe.php?idmarca=$idsinal'>
+                                        <a href= 'pmb_sinal_detalhe.php?idmarca=$idsinal'>
                                             <img src='{$caminho}' alt='' srcset=''>
                                         </a>
                                     </div>
@@ -277,7 +291,7 @@ switch ($_GET['erro']) {
                                         </div>
                                         <div class='card-actions'>
                                             <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_editar.php?id={$idsinal}' title='Editar'><i class='fas fa-pen-to-square'></i></a></div>
-                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_excluir.php?id={$idsinal}' title='Excluir' onClick='return valida_exc()'><i class='fas fa-trash-can '></i></a></div>
+                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_excluir.php?id={$idsinal}' title='Excluir' onClick='return valida_exc_sinal()'><i class='fas fa-trash-can '></i></a></div>
                                             <div class='action '><a href='pmb_sinal_certificado.php?t=m&id={$idsinal}' title='Certificado'><i class='fas fa-eye '></i></a></div>
                                         </div>
                                     </div>
@@ -287,23 +301,23 @@ switch ($_GET['erro']) {
 				?>
 			</div>
 		</div>
-	    <div class="paginator ">
-            <div class="paginator-row ">
-                <?php
-                for ($j = $page - 2; $j < ($page + 5); $j++) {
-                    if ($links[$j]['text'] > 0) {
-                        echo "
+		<div class="paginator ">
+			<div class="paginator-row ">
+				<?php
+				for ($j = $page - 2; $j < ($page + 5); $j++) {
+					if ($links[$j]['text'] > 0) {
+						echo "
                                     <a href='{$links[$j]['link']}' class='paginatior-item '>{$links[$j]['text']}</a>
                                     ";
-                    }
-                }
-                ?>
-            </div>
-        </div>
-    </div>
+					}
+				}
+				?>
+			</div>
+		</div>
+	</div>
 </div>
 </div>
 </div>
 <?php
-    require_once "pmb_rodape.php";
+require_once "pmb_rodape.php";
 ?>

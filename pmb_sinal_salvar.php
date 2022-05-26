@@ -59,18 +59,18 @@ if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {
 
     // if (($ext[1] != 'jpg') && ($ext[1] != 'png') && ($ext[1] != 'gif') && ($ext[1] != 'bmp'))
         if (($ext[1] != 'jpg') && ($ext[1] != 'JPG')) {
-            header("Location: pmb_cms_sinal.php?erro=6");
+            header("Location: pmb_sinal.php?erro=6");
         } else {
             $arq = "sinal/" . $foto_nome;
             if (file_exists($arq)) {
-                header("Location: pmb_cms_sinal.php?erro=5");
+                header("Location: pmb_sinal.php?erro=5");
             } else {
                 if ($foto_size > 1048576) {
-                    header("Location: pmb_cms_sinal.php?erro=7");
+                    header("Location: pmb_sinal.php?erro=7");
                 } else {
                     if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {
                         if (!copy($foto_temp, "sinal/" . $foto_nome)) {
-                            header("Location: pmb_cms_sinal.php?erro=3");
+                            header("Location: pmb_sinal.php?erro=3");
                         } else {
                             $caminho = "sinal/" . $foto_nome;
                         }
@@ -90,9 +90,9 @@ if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {
         	        values ('$localidade', '$produtor', '$observacao', '$numero', '$caminho', NOW())";
 
                         if ($sql = $db->query($sql)) {
-                            header("Location: pmb_cms_sinal.php?erro=1");
+                            header("Location: pmb_sinal.php?erro=1");
                         } else {
-                            header("Location: pmb_cms_sinal.php?erro=2");
+                            header("Location: pmb_sinal.php?erro=2");
                         }
                     }
                 }
@@ -103,9 +103,9 @@ if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {
     $sql = "update cms_sinais set idlocalidade = '$localidade', idprodutor = '$produtor', observacao = '$observacao', numero = '$numero' where idsinal = $id";
 
     if ($sql = $db->query($sql))
-        header("Location: pmb_cms_sinal.php?erro=1");
+        header("Location: pmb_sinal.php?erro=1");
     else
-        header("Location: pmb_cms_sinal.php?erro=2");
+        header("Location: pmb_sinal.php?erro=2");
 }
 
 ob_flush();

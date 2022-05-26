@@ -2,7 +2,7 @@
 if(file_exists("init.php")){
         require_once "init.php";
 } else {
-        die("Arquivo de init não encontrado");
+        die("Arquivo de init nï¿½o encontrado");
 }
 require_once('pmb_conecta.php');
 require_once "seguranca.php";
@@ -38,6 +38,7 @@ switch ($_GET['erro']) {
           </script>';
         break;
 }
+
 
 if (isset($_POST['where']))
     $where = "where lower(localidade) similar to '%" . strtolower($_POST['where']) . "%'";

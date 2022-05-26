@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
 	</div>
 	<div class="body-content">
 		<div class="search-bar">
-			<form action="p mb_sinal_salvar.php" enctype="multipart/form-data" method="post" name="formulario" onSubmit="return validadados()">
+			<form action="pmb_sinal_salvar.php" enctype="multipart/form-data" method="post" name="formulario" onSubmit="return validadados()">
 				<div class="form-body">
 					<input type="hidden" name="id" value="<?php echo $id; ?>">
 					<div class="form-item">

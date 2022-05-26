@@ -9,33 +9,6 @@ require_once "seguranca.php";
 
 $dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
 
-switch ($_GET['erro']) {
-    case 1: //salva com sucesso
-        echo '<script language="Javascript">
-            alert("Localidade salva com sucesso!");
-          </script>';
-        break;
-    case 2: //erro ao salvar
-        echo '<script language="Javascript">
-            alert("Localidade nao pode ser salva!");
-          </script>';
-        break;
-    case 3: //excluida com sucesso
-        echo '<script language="Javascript">
-            alert("Localidade excluida com sucesso!");
-          </script>';
-        break;
-    case 4: //erro ao excluir
-        echo '<script language="Javascript">
-            alert("Localidade nao pode ser excluida!");
-          </script>';
-        break;
-    case 5: //erro ao excluir
-        echo '<script language="Javascript">
-            alert("Localidade ja cadastrada!");
-          </script>';
-        break;
-}
 
 ?>
 
