@@ -262,7 +262,7 @@ switch ($_GET['erro']) {
 
 					echo "<div class='card'>
                                     <div class='card-img'>
-                                        <a href= 'pmb_sinal_detalhe.php?idmarca=$idsinal'>
+                                        <a href= 'pmb_sinal_detalhe.php?idsinal=$idsinal'>
                                             <img src='{$caminho}' alt='' srcset=''>
                                         </a>
                                     </div>
@@ -290,14 +290,13 @@ switch ($_GET['erro']) {
                                             </div>
                                         </div>
                                         <div class='card-actions'>
-                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_editar.php?id={$idsinal}' title='Editar'><i class='fas fa-pen-to-square'></i></a></div>
-                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_excluir.php?id={$idsinal}' title='Excluir' onClick='return valida_exc_sinal()'><i class='fas fa-trash-can '></i></a></div>
-                                            <div class='action '><a href='pmb_sinal_certificado.php?t=m&id={$idsinal}' title='Certificado'><i class='fas fa-eye '></i></a></div>
+                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_editar.php?id={$idsinal}' title='Editar'><i class='fas fa-pen-to-square'></i><span>Editar</span></a></div>
+                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_excluir.php?id={$idsinal}' title='Excluir' onClick='return valida_exc_sinal()'><i class='fas fa-trash-can '></i><span>Excluir</span></a></div>
+                                            <div class='action '><a href='pmb_sinal_certificado.php?t=m&id={$idsinal}' title='Certificado'><i class='fas fa-certificate '></i><span>Certificado</span></a></div>
                                         </div>
                                     </div>
                                 </div>";
 				}
-
 				?>
 			</div>
 		</div>

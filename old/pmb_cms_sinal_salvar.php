@@ -17,27 +17,12 @@ $produtor = $_POST['produtor'];
 $numero = $_POST['numero'];
 $observacao = $_POST['observacao'];
 
-$ch_numero = $_POST['ch_numero'];
+$numero = $_POST['numero'];
 
-if ($ch_numero == "on")
-    $ch_numero = "s";
+if ($numero == "on")
+    $numero = "1";
 else
-    $ch_numero = "n";
-
-$ch_letra = $_POST['ch_letra'];
-
-if ($ch_letra == "on")
-    $ch_letra = "s";
-else
-    $ch_letra = "n";
-
-$ch_figura = $_POST['ch_figura'];
-
-if ($ch_figura == "on")
-    $ch_figura = "s";
-else
-    $ch_figura = "n";
-
+    $numero = "0";
 
 
 if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {

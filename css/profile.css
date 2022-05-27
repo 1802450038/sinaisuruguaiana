@@ -98,6 +98,38 @@
     background-color: rgb(103, 179, 103);
 }
 
+
+
+.profile-item-row.profile-images {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-item-row.profile-images .profile-images-title {
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-bottom: -30px;
+    font-weight: bolder !important;
+    text-transform: uppercase;
+    color: rgb(81, 142, 81);
+}
+
+.profile-item-row.profile-images .profile-image {
+   border: 1px solid rgb(81, 142, 81);
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 30px 0px;
+}
+
+
+.profile-item-row.profile-images .profile-image img{
+    width: 80%;
+ }
+
+
 .profile-bottom {
     /* background-color: red; */
     /* height: 60px; */
@@ -109,11 +141,12 @@
     border-radius: 10px;
     border: 1px solid rgb(81, 142, 81);
 }
+
 .profile-bottom-title {
     width: 100%;
 }
 
-.profile-bottom-title  h2{
+.profile-bottom-title h2 {
     padding-top: 0px;
     margin-top: 0px;
     color: rgb(81, 142, 81);
@@ -139,12 +172,12 @@
     color: white;
     font-size: 13pt;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     width: 60%;
 }
 
 
-.profile-bottom .profile-actions-row a{
+.profile-bottom .profile-actions-row a {
 
     display: flex;
     align-items: center;
@@ -158,11 +191,16 @@
     border-radius: 10px;
 }
 
+
+
+
 .edit {
     background-color: rgb(113, 199, 113);
 }
 
-.back {background-color: rgb(110, 137, 255);}
+.back {
+    background-color: rgb(110, 137, 255);
+}
 
 .delete {
     background-color: rgb(255, 124, 124);

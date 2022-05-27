@@ -51,11 +51,12 @@ switch ($_GET['erro']) {
 ?>
 
 <script>
-    function valida_exc() {
-        var retorno = confirm('Confirma exclusao da marca?');
+    	function valida_exc_marca() {
+		console.log("tadala felas");
+		var retorno = confirm('Confirma exclusao do marca?');
 
-        return (retorno);
-    }
+		return (retorno);
+	}
 
     function acao(posicao) {
         formulario.action = 'pmb_marca.php?posicao=' + posicao;
@@ -287,7 +288,7 @@ switch ($_GET['erro']) {
 
                     echo "<div class='card'>
                                     <div class='card-img'>
-                                        <a href= 'pmb_cms_marca_detalhe.php?idmarca=$idmarca'>
+                                        <a href= 'pmb_marca_detalhe.php?idmarca=$idmarca'>
                                             <img src='{$caminho}' alt='' srcset=''>
                                         </a>
                                     </div>
@@ -315,9 +316,9 @@ switch ($_GET['erro']) {
                                             </div>
                                         </div>
                                         <div class='card-actions'>
-                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_marca_editar.php?id={$idmarca}' title='Editar'><i class='fas fa-pen-to-square'></i></a></div>
-                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_cms_marca_excluir.php?id={$idmarca}' title='Excluir' onClick='return valida_exc()'><i class='fas fa-trash-can '></i></a></div>
-                                            <div class='action '><a href='pmb_cms_certificado.php?t=m&id={$idmarca}' title='Certificado'><i class='fas fa-eye '></i></a></div>
+                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_marca_editar.php?id={$idmarca}' title='Editar'><i class='fas fa-pen-to-square'></i><span>Editar</span></a></div>
+                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_marca_excluir.php?id={$idmarca}' title='Excluir' onClick='return valida_exc_marca()'><i class='fas fa-trash-can '></i><span>Excluir</span></a></div>
+                                            <div class='action '><a href='pmb_marca_certificado.php?t=m&id={$idmarca}' title='Certificado'><i class='fas fa-certificate '></i><span>Certificado</span></a></div>
                                         </div>
                                     </div>
                                 </div>";
@@ -344,5 +345,5 @@ switch ($_GET['erro']) {
 </div>
 </div>
 <?php
-    require_once "pmb_rodape.php";
+require_once "pmb_rodape.php";
 ?>

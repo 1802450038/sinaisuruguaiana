@@ -146,7 +146,7 @@ if (isset($_GET['id'])) {
 						<div class="form-item-input-group">
 							<div class="checkgroup">
 								<label for="numero">Numero</label>
-								<input name="numero" id="numero" type="checkbox" class="checkmark">
+								<input name="numero" id="numero" type="checkbox" class="checkmark" <?php if ($numero == "1") echo "checked"; ?>>
 							</div>
 						</div>
 					</div>

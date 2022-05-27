@@ -1,15 +1,7 @@
 <?php
-if (file_exists("init.php")) {
-	require_once "init.php";
-} else {
-	die("Arquivo de init n�o encontrado");
-}
-// require_once('pmb_conecta.php');
-// require_once "seguranca.php";
-// require('pmb_cabecalho.php');
-$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
 
-// require_once('pmb_cabecalho.php');
+require_once('pmb_cabecalho.php');
+
 
 // @GB
 if (isset($_GET['id'])) {
@@ -29,6 +21,7 @@ if (isset($_GET['id'])) {
 	$ch_letra = $linha['ch_letra'];
 	$ch_figura = $linha['ch_figura'];
 	$caminho = $linha['caminho'];
+	
 } else {
 	$id = "";
 	$local = "";
@@ -158,18 +151,18 @@ if (isset($_GET['id'])) {
 					<div class="form-item">
 						<div class="form-item-input-group">
 							<div class="checkgroup">
-								<label for="numero">Numero</label>
-								<input name="numero" id="numero" type="checkbox" class="checkmark">
+								<label for="ch_numero">Numero</label>
+								<input name="ch_numero" id="ch_numero" type="checkbox" class="checkmark" <?php if ($ch_numero == "s") echo "checked"; ?>>
 							</div>
 
 							<div class="checkgroup">
-								<label for="letra">Letra</label>
-								<input name="letra" id="letra" type="checkbox" class="checkmark">
+								<label for="ch_letra">Letra</label>
+								<input name="ch_letra" id="ch_letra" type="checkbox" class="checkmark" <?php if ($ch_letra == "s") echo "checked"; ?>>
 							</div>
 
 							<div class="checkgroup">
-								<label for="figura">Figura</label>
-								<input name="figura" id="figura" type="checkbox" class="checkmark">
+								<label for="ch_figura">Figura</label>
+								<input name="ch_figura" id="ch_figura" type="checkbox" class="checkmark" <?php if ($ch_figura == "s") echo "checked"; ?>>
 							</div>
 						</div>
 					</div>

@@ -70,13 +70,13 @@ VERFICADO -> {
 TODO -> {
     MARCA   [CRIAR]
     MARCA   [ATUALIZAR]
-    MARCA   [VISUALIZAR]
+    MARCA   [VISUALIZAR]        [100%]
     MARCA   [DELETAR]
-    MARCAS  [VISUALIZAR]
+    MARCAS  [VISUALIZAR] 
 
     SINAL   [CRIAR]             [100%]
     SINAL   [ATUALIZAR]         [100%]
-    SINAL   [VISUALIZAR]
+    SINAL   [VISUALIZAR]        [100%]
     SINAL   [DELETAR]           [100%]
     SINAIS  [VISUALIZAR]        [100%]
 
