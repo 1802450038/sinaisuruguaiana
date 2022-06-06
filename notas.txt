@@ -68,11 +68,11 @@ VERFICADO -> {
 }
 
 TODO -> {
-    MARCA   [CRIAR]
-    MARCA   [ATUALIZAR]
+    MARCA   [CRIAR]             [100%]
+    MARCA   [ATUALIZAR]         [100%]
     MARCA   [VISUALIZAR]        [100%]
-    MARCA   [DELETAR]
-    MARCAS  [VISUALIZAR] 
+    MARCA   [DELETAR]           [100%]
+    MARCAS  [VISUALIZAR]        [100%]
 
     SINAL   [CRIAR]             [100%]
     SINAL   [ATUALIZAR]         [100%]
@@ -90,7 +90,7 @@ TODO -> {
 DONE -> {
     PRODUTOR    [CRIAR]         [100%]
     PRODUTOR    [ATUALIZAR]     [100%]
-    PRODUTOR    [VISUALIZAR]    [90%]
+    PRODUTOR    [VISUALIZAR]    [100%]
     PRODUTORES  [VISUALIZAR]    [100%]
     PRODUTOR    [DELETAR]       [100%]
 }

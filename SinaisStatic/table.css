@@ -78,3 +78,36 @@
     background-color: rgb(255, 124, 124);
 
 }
+
+.data-image {
+    display: flex;
+    height: 120px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-for-table {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-for-table img {
+    height: 90%;
+    padding: 20px 0px ;
+}
+
+
+
+
+@media (max-width: 680px) {
+
+    .form-body table tbody  td .actions{
+        /* background-color: red; */
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+}

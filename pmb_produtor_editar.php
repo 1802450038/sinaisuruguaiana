@@ -120,7 +120,7 @@ if (isset($_GET['id'])) {
                     </div>
                     <div class="form-item">
                         <div class="form-item-input">
-                            <label class="form-item-input-label" for="ie">Inscrição estadual</label>
+                            <label class="form-item-input-label" for="ie">Livro / Pagina</label>
                             <?php
                             if ($ie) {
                                 echo ("<input name='ie' id='ie' type='text' class='form-item-input-text' value='$ie'>");

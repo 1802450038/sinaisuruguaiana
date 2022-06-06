@@ -25,9 +25,9 @@ require_once('pmb_cabecalho.php');
     $telefone = $linha['telefone'];
     $data_cadastro = $linha['data_cadastro'];
     $data_atualizacao = $linha['data_atualizacao'];
-    
+
     ?>
-    
+
     <div class="body-title">
         <h2>Produtor</h2>
     </div>
@@ -36,9 +36,6 @@ require_once('pmb_cabecalho.php');
             <div class="content">
                 <div class="profile-content">
                     <div class="profile-top">
-                        <div class="profile-img">
-                            <img src="brasao.jpg" alt="" srcset="">
-                        </div>
                         <div class="profile-name">
                             <h1><?php echo "$nome" ?></h1>
                         </div>
@@ -108,7 +105,105 @@ require_once('pmb_cabecalho.php');
                             </div>
 
                         </div>
+                   
+                        <div class="profile-item-row profile-markings">
+                            <div class="profile-markings-title">
+                                <h2>Marcas do produtor</h2>
+                            </div>
+                            <?php
+                            $sql = "SELECT m.idmarca, l.localidade, m.caminho 
+                            FROM cms_marcas m
+                            LEFT JOIN cms_localidades l ON l.idlocalidade = m.idlocalidade
+                            WHERE m.idprodutor =" . $id . " order by m.idmarca";
 
+                            $sql = $db->query($sql);
+                            ?>
+
+                            <div class="form-body profile-table-body">
+                                <table class="profile-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Imagem</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($linha = $db->fetchArray($sql)) {
+                                            $idmarca = $linha['idmarca'];
+                                            $caminho = $linha['caminho'];
+                                            echo "
+                                            <tr>
+                                                <td style='font-weight: bolder;'>$idmarca</td>
+                                                <td class='data-image'>
+                                                    <div class='image-for-table'>
+                                                        <img src='$caminho' alt='' class='table-img'>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class='actions'>
+                                                        <a href='/pmb_marca_detalhe.php?idmarca=$idmarca' class='view'><span class='fas fa-eye'></span></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            ";
+                                        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="profile-item-row profile-signs">
+                            <div class="profile-signs-title">
+                                <h2>Sinais do produtor</h2>
+                            </div>
+                            <?php
+                            $sql = "SELECT s.idsinal, l.localidade, s.caminho 
+                            FROM cms_sinais s
+                            LEFT JOIN cms_localidades l ON l.idlocalidade = s.idlocalidade
+                            WHERE s.idprodutor =" . $id . " order by s.idsinal";
+
+                            $sql = $db->query($sql);
+                            ?>
+
+                            <div class="form-body profile-table-body">
+                                <table class="profile-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Imagem</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($linha = $db->fetchArray($sql)) {
+                                            $idmarca = $linha['idsinal'];
+                                            $caminho = $linha['caminho'];
+                                            echo "
+                                            <tr>
+                                                <td style='font-weight: bolder;'>$idmarca</td>
+                                                <td class='data-image'>
+                                                    <div class='image-for-table'>
+                                                        <img src='$caminho' alt='' class='table-img'>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class='actions'>
+                                                        <a href='/pmb_marca_detalhe.php?idmarca=$idmarca' class='view'><span class='fas fa-eye'></span></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            ";
+                                        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="profile-bottom">
                         <div class="profile-bottom-title">

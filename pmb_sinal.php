@@ -4,12 +4,10 @@ if (file_exists("init.php")) {
 } else {
 	die("Arquivo de init não encontrado");
 }
-require_once('pmb_conecta.php');
-require_once "seguranca.php";
-
-$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
 
 require_once('pmb_cabecalho.php');
+
+$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
 
 switch ($_GET['erro']) {
 	case 1: //salva com sucesso

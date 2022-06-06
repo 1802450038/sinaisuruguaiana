@@ -28,12 +28,12 @@ unlink($caminho);
 $sql = "delete from cms_marcas where idmarca = $id";
 
 if ($sql = $db->query($sql))
-    header("Location: pmb_cms_marca.php?erro=3");
+    header("Location: pmb_marca.php?erro=3");
 else
-    header("Location: pmb_cms_marca.php?erro=4");
+    header("Location: pmb_marca.php?erro=4");
 }
 else{
-header("Location: pmb_cms_marca.php?erro=4");
+header("Location: pmb_marca.php?erro=4");
 }
 
 
