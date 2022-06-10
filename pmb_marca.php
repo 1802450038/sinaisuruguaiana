@@ -242,10 +242,21 @@ switch ($_GET['erro']) {
                 $start = ($page - 1) * $itemsPerPage;
 
 
-                $query = "SELECT SQL_CALC_FOUND_ROWS m.idmarca, m.observacao, l.localidade, p.nome, m.numero, m.caminho 
+                $query = "SELECT SQL_CALC_FOUND_ROWS 
+                        m.idmarca, m.observacao, 
+                        l.localidade, 
+                        p.nome, 
+                        ps.nome AS nomesecundario,
+                        pt.nome AS nometerciario,
+                        pq.nome AS nomequaternario,
+                        m.numero, 
+                        m.caminho 
                         FROM cms_marcas m
                         LEFT JOIN cms_localidades l ON l.idlocalidade = m.idlocalidade
                         LEFT JOIN cms_produtores p ON p.idprodutor = m.idprodutor
+                        LEFT JOIN cms_produtores ps ON ps.idprodutor = m.idprodutorsecundario
+                        LEFT JOIN cms_produtores pt ON pt.idprodutor = m.idprodutorterciario
+                        LEFT JOIN cms_produtores pq ON pq.idprodutor = m.idprodutorquaternario
                         WHERE $search LIKE '%$term%' ORDER BY p.nome, m.numero LIMIT $start, $itemsPerPage";
 
                 $rows = "SELECT FOUND_ROWS() AS nrtotal;";
@@ -277,9 +288,14 @@ switch ($_GET['erro']) {
 
                 while ($linha = $db->fetchArray($query)) {
 
+                    // var_dump($linha);
+                    // var_dump($linha['nome']);
                     $idmarca = $linha['idmarca'];
                     $localidade = $linha['localidade'];
                     $produtor = $linha['nome'];
+                    $produtorsecundario = $linha['nomesecundario'];
+                    $produtorterciario = $linha['nometerciario'];
+                    $produtorquaternario = $linha['nomequaternario'];
                     $numero = $linha['numero'];
                     $observacao = $linha['observacao'];
                     $caminho = $linha['caminho'];
@@ -298,9 +314,22 @@ switch ($_GET['erro']) {
                                             </div>
                                         </div>
                                         <div class='card-items'>
-                                            <div class='item'>
-                                                <div class='item-name'>Produtor</div>
-                                                <div class='item-value prod'>{$produtor}</div>
+                                            <div class='item' style='height: 100px;'>";
+                                                if($produtorsecundario){
+                                                    echo "
+                                                        <div class='item-name'>Produtores</div>
+                                                        <div class='item-value prod' style='line-height: 18px; padding-bottom: 10px;'>{$produtor}<br>
+                                                                                    {$produtorsecundario}<br>
+                                                                                    {$produtorterciario}<br>
+                                                                                    {$produtorquaternario}
+                                                                                    </div>
+                                                    ";
+                                                } else {
+                                                    echo "
+                                                        <div class='item-name'>Produtor</div>
+                                                        <div class='item-value prod'>{$produtor}</div>";
+                                                }
+                                                echo "
                                             </div>
 
                                             <div class='item'>

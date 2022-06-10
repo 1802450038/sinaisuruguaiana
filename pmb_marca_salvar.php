@@ -12,7 +12,13 @@ $dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["
 
 $localidade = $_POST['localidade'];
 
-$produtor = $_POST['produtor']	;
+$produtor = $_POST['produtor'];
+
+$produtorsecundario = $_POST['produtorsecundario'];
+
+$produtorterciario = $_POST['produtorterciario'];
+
+$produtorquaternario = $_POST['produtorquaternario'];
 
 $observacao = $_POST['observacao'];
 
@@ -90,8 +96,8 @@ if ((!isset($_POST['id'])) || ($_POST['id'] == ''))
 		$numero = $db->fetchArray($sql);		
 		$numero = $numero['max'] + 1;
 	    // @GB
-		$sql = "insert into cms_marcas (idlocalidade, idprodutor, observacao, numero, caminho, ch_numero, ch_letra, ch_figura, data_cadastro) 
-        	values ('$localidade', '$produtor','$observacao', '$numero', '$caminho', '$ch_numero', '$ch_letra', '$ch_figura', NOW())";
+		$sql = "insert into cms_marcas (idlocalidade, idprodutor, idprodutorsecundario, idprodutorterciario, idprodutorquaternario, observacao, numero, caminho, ch_numero, ch_letra, ch_figura, data_cadastro) 
+        	values ('$localidade', '$produtor', '$produtorsecundario', '$produtorterciario', '$produtorquaternario', '$observacao', '$numero', '$caminho', '$ch_numero', '$ch_letra', '$ch_figura', NOW())";
 	    
 	        if ($sql = $db->query($sql))
     		    header("Location: pmb_marca.php?erro=1");
@@ -105,7 +111,7 @@ else
 {
     // @GB
     $id = (int)$_POST['id'];
-    $sql = "update cms_marcas set idlocalidade = '$localidade', idprodutor = '$produtor', observacao = '$observacao', ch_numero = '$ch_numero',
+    $sql = "update cms_marcas set idlocalidade = '$localidade', idprodutor = '$produtor', idprodutorsecundario = '$produtorsecundario', idprodutorterciario = '$produtorterciario', idprodutorquaternario = '$produtorquaternario', observacao = '$observacao', ch_numero = '$ch_numero',
     ch_letra = '$ch_letra', ch_figura = '$ch_figura' where idmarca = $id";
     
     if ($sql = $db->query($sql))

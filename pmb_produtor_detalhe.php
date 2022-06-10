@@ -2,16 +2,13 @@
 
 require_once('pmb_cabecalho.php');
 
-// $id = anti_injection($_GET['id']);
-
-
 ?>
 
 <div class="body">
     <?php
     $id = (int)$_GET['id'];
 
-    $query = "SELECT l.localidade, p.nome, p.cpf, p.ie, p.endereco, p.telefone, p.data_cadastro, p.data_atualizacao 
+    $query = "SELECT l.localidade, p.nome, p.rg, p.cpf, p.ie, p.endereco, p.telefone, p.data_cadastro, p.data_atualizacao 
 	FROM cms_produtores p
 	LEFT JOIN cms_localidades l ON l.idlocalidade = p.idlocalidade
 	WHERE idprodutor = $id";
@@ -19,6 +16,7 @@ require_once('pmb_cabecalho.php');
     $linha = $db->fetchArray($sql);
     $localidade = $linha['localidade'];
     $nome = $linha['nome'];
+    $rg = $linha['rg'];
     $cpf = $linha['cpf'];
     $ie = $linha['ie'];
     $endereco = $linha['endereco'];
@@ -52,6 +50,22 @@ require_once('pmb_cabecalho.php');
                                     </div>
                                     <div class="profile-item-value">
                                         <h4><?php echo "$nome" ?></h4>
+                                    </div>
+                                </div>
+                                <div class="profile-item">
+                                    <div class="profile-item-title">
+                                        <h4>RG</h4>
+                                    </div>
+                                    <div class="profile-item-value">
+                                        <h4><?php echo "$rg" ?></h4>
+                                    </div>
+                                </div>
+                                <div class="profile-item">
+                                    <div class="profile-item-title">
+                                        <h4>CPF</h4>
+                                    </div>
+                                    <div class="profile-item-value">
+                                        <h4><?php echo "$cpf" ?></h4>
                                     </div>
                                 </div>
                                 <div class="profile-item">

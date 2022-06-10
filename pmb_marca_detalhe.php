@@ -17,10 +17,25 @@ require_once('pmb_cabecalho.php');
     <?php
     $idmarca = (int)($_GET['idmarca']);
 
-    $query = "SELECT l.localidade, p.nome, m.numero, m.observacao, m.caminho, m.data_cadastro
+    $query = "SELECT 
+    l.localidade, 
+    p.nome, 
+    ps.nome AS nomesecundario,
+    pt.nome AS nometerciario,
+    pq.nome AS nomequaternario,
+    m.numero,
+    m.observacao, 
+    m.caminho, 
+    m.data_cadastro,
+    m.data_atualizacao,
+    m.data_validade
+
 	FROM cms_marcas m
 	LEFT JOIN cms_localidades l ON l.idlocalidade = m.idlocalidade
-	LEFT JOIN cms_produtores p ON p.idprodutor = m.idprodutor
+    LEFT JOIN cms_produtores p ON p.idprodutor = m.idprodutor
+    LEFT JOIN cms_produtores ps ON ps.idprodutor = m.idprodutorsecundario
+    LEFT JOIN cms_produtores pt ON pt.idprodutor = m.idprodutorterciario
+    LEFT JOIN cms_produtores pq ON pq.idprodutor = m.idprodutorquaternario
 	WHERE idmarca = " . $idmarca;
 
     $sql = $db->query($query);
@@ -28,12 +43,15 @@ require_once('pmb_cabecalho.php');
 
     $localidade = $linha['localidade'];
     $nome = $linha['nome'];
+    $produtorsecundario = $linha['nomesecundario'];
+    $produtorterciario = $linha['nometerciario'];
+    $produtorquaternario = $linha['nomequaternario'];
     $caminho = $linha['caminho'];
     $numero = $linha['numero'];
     $observacao = $linha['observacao'];
     $data_cadastro = $linha['data_cadastro'];
     $data_atualizacao = $linha['data_atualizacao'];
-
+    $data_validade = $linha['data_validade'];
     ?>
 
     <div class="body-title">
@@ -54,7 +72,7 @@ require_once('pmb_cabecalho.php');
                     <div class="profile-middle">
                         <div class="profile-item-row profile-values">
                             <div class="profile-items-title">
-                                <h2>Dados do Produtor</h2>
+                                <h2>Dados da Marca</h2>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-item">
@@ -65,6 +83,46 @@ require_once('pmb_cabecalho.php');
                                         <h4><?php echo "$nome" ?></h4>
                                     </div>
                                 </div>
+                                <?php
+                                    if($produtorsecundario){
+                                        echo "
+                                        <div class='profile-item'>
+                                        <div class='profile-item-title'>
+                                            <h4>Produtor secundário</h4>
+                                        </div>
+                                        <div class='profile-item-value'>
+                                            <h4>$produtorsecundario</h4>
+                                        </div>
+                                    </div>
+                                        ";
+                                    }
+                                    if($produtorterciario){
+                                        echo "
+                                        <div class='profile-item'>
+                                        <div class='profile-item-title'>
+                                            <h4>Produtor terciário</h4>
+                                        </div>
+                                        <div class='profile-item-value'>
+                                            <h4>$produtorterciario</h4>
+                                        </div>
+                                    </div>
+                                        ";
+                                    }
+                                    if($produtorquaternario){
+                                        echo "
+                                        <div class='profile-item'>
+                                        <div class='profile-item-title'>
+                                            <h4>Produtor quaternário</h4>
+                                        </div>
+                                        <div class='profile-item-value'>
+                                            <h4>$produtorquaternario</h4>
+                                        </div>
+                                    </div>
+                                        ";
+                                    }
+
+                                ?>
+
                                 <div class="profile-item">
                                     <div class="profile-item-title">
                                         <h4>Localidade</h4>
@@ -95,6 +153,14 @@ require_once('pmb_cabecalho.php');
                                     </div>
                                     <div class="profile-item-value">
                                         <h4><?php echo "$data_atualizacao" ?></h4>
+                                    </div>
+                                </div>
+                                <div class="profile-item">
+                                    <div class="profile-item-title">
+                                        <h4>Valido até</h4>
+                                    </div>
+                                    <div class="profile-item-value">
+                                        <h4><?php echo "$data_validade" ?></h4>
                                     </div>
                                 </div>
                             </div>

@@ -1,4 +1,6 @@
 1 - CRIAR CAMPOS{
+
+
     -> Criar campo prazo de validade marca [Create]
     -> Criar campo prazo de validade sinal [Create]
     -> Criar campo observação para marca [Create]
@@ -16,7 +18,7 @@
     -> Criar campo observação para sinal [Delete]
 }
 
-2 - ALTERAR CAMPOS {
+2 - ALTERAR CAMPOS [100%]{
     -> Quantidade exibir todos
     -> Alterar campo de incrição estadual => livro/pagina 
 }
@@ -32,15 +34,16 @@
     -> Adicionar ultima atualização
 }
 
-4- PERFIL MARCA/SINAL {
+4- PERFIL MARCA/SINAL [50%]{
     -> Adicionar informação ultima atualização
+    -> Adicionar informação para mais de um produtor
     -> Adicionar data de validade para (10 ANOS)
     -> "Este certificado é valido até 11/05/2032"
 }
 
-5- CADASTRO DO PRODUTOR {
-    -> Adicionar um campo para RG's (+ de 1)
-    -> Adicionar um campo para cpfs (+ de 1)
+5- CADASTRO DO PRODUTOR [100%]{
+    -> Adicionar um campo para RG
+    -> Adicionar um campo para cpf
 }
 
 VERFICADO -> {
@@ -62,12 +65,23 @@ VERFICADO -> {
         + EXCLUIR
         + EDITAR
     }
-    LOCALIDADES [00]{
-        
+    LOCALIDADES [100]{
+        + INCLUIR
+        + EXCLUIR
     }
 }
 
 TODO -> {
+
+}
+
+DONE -> {
+    PRODUTOR    [CRIAR]         [100%]
+    PRODUTOR    [ATUALIZAR]     [100%]
+    PRODUTOR    [VISUALIZAR]    [100%]
+    PRODUTORES  [VISUALIZAR]    [100%]
+    PRODUTOR    [DELETAR]       [100%]
+
     MARCA   [CRIAR]             [100%]
     MARCA   [ATUALIZAR]         [100%]
     MARCA   [VISUALIZAR]        [100%]
@@ -80,17 +94,7 @@ TODO -> {
     SINAL   [DELETAR]           [100%]
     SINAIS  [VISUALIZAR]        [100%]
 
-    LOCALIDADE  [CRIAR]
-    LOCALIDADE  [ATUALIZAR]
-    LOCALIDADE  [VISUALIZAR]
-    LOCALIDADE  [DELETAR]
-    LOCALIDADES [VISUALIZAR]
-}
-
-DONE -> {
-    PRODUTOR    [CRIAR]         [100%]
-    PRODUTOR    [ATUALIZAR]     [100%]
-    PRODUTOR    [VISUALIZAR]    [100%]
-    PRODUTORES  [VISUALIZAR]    [100%]
-    PRODUTOR    [DELETAR]       [100%]
+    LOCALIDADE  [CRIAR]         [100%]
+    LOCALIDADE  [DELETAR]       [100%]
+    LOCALIDADES [VISUALIZAR]    [100%]
 }

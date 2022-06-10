@@ -55,7 +55,7 @@ $dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["
                     <a href="pmb_produtor.php">PRODUTORES</a>
                 </li>
                 <li>
-                    <a href="pmb_local.php">LOCALIDADES</a>
+                    <a href="pmb_localidade.php">LOCALIDADES</a>
                 </li>
                 <li>
                     <a href="pmb_senha_alterar.php">ALTERAR SENHA</a>
@@ -80,7 +80,7 @@ $dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["
                     <a href="pmb_produtor.php" class="nav-link"> <i class="nav-ico fas fas fa-users-between-lines"> </i> <span>PRODUTORES</span></a>
                 </li>
                 <li class="mobile-item">
-                    <a href="pmb_local.php" class="nav-link"> <i class="nav-ico fas fas fa-location-dot"> </i> <span>LOCALIDADES</span></a>
+                    <a href="pmb_localidade.php" class="nav-link"> <i class="nav-ico fas fas fa-location-dot"> </i> <span>LOCALIDADES</span></a>
                 </li>
                 <li class="mobile-item">
                     <a href="pmb_senha_alterar.php" class="nav-link"> <i class="nav-ico fab fa-expeditedssl"></i> <span>SENHA</span></a>

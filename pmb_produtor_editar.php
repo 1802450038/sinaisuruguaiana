@@ -3,7 +3,7 @@ require_once('pmb_cabecalho.php');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "select idlocalidade, nome, cpf, ie, endereco, telefone from cms_produtores where idprodutor = " . $id;
+    $sql = "select idlocalidade, nome, rg, cpf, ie, endereco, telefone from cms_produtores where idprodutor = " . $id;
     //$result = pg_query($conect, $sql)
     //or die("Nao foi possivel conectar no banco de dados!");
 
@@ -13,6 +13,7 @@ if (isset($_GET['id'])) {
     $linha = $db->fetchArray($sql);
     $local = $linha['idlocalidade'];
     $nome = $linha['nome'];
+    $rg = $linha['rg'];
     $cpf = $linha['cpf'];
     $ie = $linha['ie'];
     $endereco = $linha['endereco'];
@@ -21,6 +22,7 @@ if (isset($_GET['id'])) {
     $id = "";
     $local = "";
     $nome = "";
+    $rg = "";
     $cpf = "";
     $ie = "";
     $endereco = "";
@@ -114,6 +116,18 @@ if (isset($_GET['id'])) {
                                 echo ("<input name='cpf' id='cpf' type='text' class='form-item-input-text' value='$cpf'>");
                             } else {
                                 echo ("<input name='cpf' id='cpf' type='text' class='form-item-input-text'>");
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item-input">
+                            <label class="form-item-input-label" for="cpf">RG</label>
+                            <?php
+                            if ($rg) {
+                                echo ("<input name='rg' id='rg' type='text' class='form-item-input-text' value='$rg'>");
+                            } else {
+                                echo ("<input name='rg' id='rg' type='text' class='form-item-input-text'>");
                             }
                             ?>
                         </div>
