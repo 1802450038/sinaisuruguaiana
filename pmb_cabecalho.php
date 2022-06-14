@@ -20,6 +20,7 @@ $dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["
 	<link rel="stylesheet" href="css/form.css">
 	<link rel="stylesheet" href="css/table.css">
 	<link rel="stylesheet" href="css/profile.css">
+	<link rel="stylesheet" href="css/home.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
 	<title>Marcas e sinais</title>
 </head>

@@ -1,85 +1,22 @@
 <?php
-if (file_exists("init.php")) {
-	require_once "init.php";
-} else {
-	die("Arquivo de init não encontrado");
-}
-
-require_once('pmb_cabecalho.php');
-
-$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
-
-switch ($_GET['erro']) {
-	case 1: //salva com sucesso
-		echo '<script language="Javascript">
-            alert("Sinal salvo com sucesso!");
-          </script>';
-		break;
-	case 2: //erro ao salvar
-		echo '<script language="Javascript">
-            alert("Sinal nao pode ser salvo!");
-          </script>';
-		break;
-	case 3: //excluida com sucesso
-		echo '<script language="Javascript">
-            alert("Sinal excluido com sucesso!");
-          </script>';
-		break;
-	case 4: //erro ao excluir
-		echo '<script language="Javascript">
-            alert("Sinal nao pode ser excluido!");
-          </script>';
-		break;
-	case 5: //imagem duplicada
-		echo '<script language="Javascript">
-            alert("Ja existe um sinal com este nome de arquivo!");
-          </script>';
-		break;
-	case 6: //formato invalido
-		echo '<script language="Javascript">
-            alert("Formato de arquivo invalido!");
-          </script>';
-		break;
-	case 7: //formato invalido
-		echo '<script language="Javascript">
-            alert("Imagem excedeu o tamanho maximo! (1MB)");
-          </script>';
-		break;
-}
-
+require_once ('pmb_ver_cabecalho.php');
 ?>
 
 <script>
-	function valida_exc_sinal() {
-		console.log("tadala felas");
-		var retorno = confirm('Confirma exclusao do sinal?');
+    function acao(posicao) {
+	formulario.action = 'pmb_cms_ver_sinal.php?posicao=' + posicao;	
+	
+    }
 
-		return (retorno);
-	}
-
-	function acao(posicao) {
-		formulario.action = 'pmb_cms_sinal.php?posicao=' + posicao;
-
-	}
 </script>
-
 
 <div class="body">
 	<div class="body-title">
 		<h2>Sinais</h2>
 	</div>
 	<div class="body-content">
-		<div class="action-bar">
-			<!-- form -->
-			<div class="form-action">
-				<div class="action-bar-label">
-					Selecione para adicionar um sinal
-				</div>
-				<button class="action-bar-button" value="Incluir Sinal" onClick="location.href='/pmb_sinal_editar.php'">Adicionar sinal</button>
-			</div>
-		</div>
 		<div class="search-bar">
-			<form method="post" action="pmb_sinal.php" name="formulario">
+			<form method="post" action="pmb_ver_sinal.php" name="formulario">
 				<div class="form-body">
 					<div class="form-item">
 						<div class="form-item-input">
@@ -265,7 +202,7 @@ switch ($_GET['erro']) {
 
 				for ($i = 1; $i <= $pages; $i++) {
 					array_push($links, [
-						'link' => '/pmb_sinal.php?' . http_build_query([
+						'link' => '/pmb_ver_sinal.php?' . http_build_query([
 							'page' => $i,
 							'quantity' => $itemsPerPage,
 							'search' => $search,
@@ -331,16 +268,6 @@ switch ($_GET['erro']) {
                                                 <div class='item-name'>Localidade</div>
                                                 <div class='item-value'>{$localidade}</div>
                                             </div>
-
-                                            <div class='item'>
-                                                <div class='item-name'>Observação</div>
-                                                <div class='item-value'>{$observacao}</div>
-                                            </div>
-                                        </div>
-                                        <div class='card-actions'>
-                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_editar.php?id={$idsinal}' title='Editar'><i class='fas fa-pen-to-square'></i><span>Editar</span></a></div>
-                                            <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_sinal_excluir.php?id={$idsinal}' title='Excluir' onClick='return valida_exc_sinal()'><i class='fas fa-trash-can '></i><span>Excluir</span></a></div>
-                                            <div class='action '><a href='pmb_sinal_certificado.php?t=m&id={$idsinal}' title='Certificado'><i class='fas fa-certificate '></i><span>Certificado</span></a></div>
                                         </div>
                                     </div>
                                 </div>";
@@ -376,8 +303,8 @@ switch ($_GET['erro']) {
 		</div>
 	</div>
 </div>
-</div>
-</div>
+
+
 <?php
-require_once "pmb_rodape.php";
+    require_once ('pmb_rodape.php');
 ?>

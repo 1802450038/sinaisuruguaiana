@@ -4,7 +4,7 @@ require_once('pmb_cabecalho.php');
 
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];
-	$sql = "select idlocalidade, idprodutor, observacao, numero, caminho from cms_sinais where idsinal = " . $id;
+	$sql = "select idlocalidade, idprodutor, idprodutorsecundario, idprodutorterciario, idprodutorquaternario, observacao, numero, caminho from cms_sinais where idsinal = " . $id;
 	//$result = pg_query($conect, $sql)
 	//or die("Nao foi possivel conectar no banco de dados!");
 
@@ -14,21 +14,24 @@ if (isset($_GET['id'])) {
 	$linha = $db->fetchArray($sql);
 	$local = $linha['idlocalidade'];
 	$produtor = $linha['idprodutor'];
+	$produtorsecundario = $linha['idprodutorsecundario'];
+	$produtorterciario = $linha['idprodutorterciario'];
+	$produtorquaternario = $linha['idprodutorquaternario'];
 	$numero = $linha['numero'];
-	$caminho = $linha['caminho'];
 	$observacao = $linha['observacao'];
+	$caminho = $linha['caminho'];
 } else {
 	$id = "";
 	$local = "";
 	$produtor = "";
-	$caminho = "";
+	$produtorsecundario = "";
+	$produtorterciario = "";
+	$produtorquaternario = "";
 	$observacao = "";
+	$caminho = "";
+	$numero = "";
 }
-
-
 ?>
-
-
 
 <div class="body">
 	<div class="body-title">
@@ -110,18 +113,71 @@ if (isset($_GET['id'])) {
 								$sql = $db->query($sql);
 								echo "<option value='' selected>SELECIONE</option>";
 								while ($linha = $db->fetchArray($sql)) {
-									if (isset($_POST['produtor'])){
+									if (isset($_POST['produtor'])) {
 										if ($linha['idprodutor'] == $_POST['produtor'])
 											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
 										else
 											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
-									}else if (isset($_GET['id'])){
+									} else if (isset($_GET['id'])) {
 										if ($linha['idprodutor'] == $produtor)
 											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
 										else
 											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
-									}
-									else
+									} else
+										echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+								}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="form-item-input">
+							<label class="form-item-input-label" for="produtorsecundario">Selecione o Produtor Secundário</label>
+							<select name="produtorsecundario" id="produtorsecundario">
+								<?php
+								require_once('pmb_conecta.php');
+								$sql = "select idprodutor, nome from cms_produtores order by nome";
+								$sql = $db->query($sql);
+								echo "<option value='' selected>SELECIONE</option>";
+								while ($linha = $db->fetchArray($sql)) {
+									if (isset($_POST['produtorsecundario'])) {
+										if ($linha['idprodutor'] == $_POST['produtorsecundario'])
+											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
+										else
+											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+									} else if (isset($_GET['id'])) {
+										if ($linha['idprodutor'] == $produtorsecundario)
+											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
+										else
+											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+									} else
+										echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+								}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="form-item-input">
+							<label class="form-item-input-label" for="produtorsecundario">Selecione o Produtor Terciário</label>
+							<select name="produtorterciario" id="produtorterciario">
+								<?php
+								require_once('pmb_conecta.php');
+								$sql = "select idprodutor, nome from cms_produtores order by nome";
+								$sql = $db->query($sql);
+								echo "<option value='' selected>SELECIONE</option>";
+								while ($linha = $db->fetchArray($sql)) {
+									if (isset($_POST['produtorterciario'])) {
+										if ($linha['idprodutor'] == $_POST['produtorterciario'])
+											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
+										else
+											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+									} else if (isset($_GET['id'])) {
+										if ($linha['idprodutor'] == $produtorterciario)
+											echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
+										else
+											echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
+									} else
 										echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
 								}
 								?>

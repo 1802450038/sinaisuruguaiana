@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 1 - CRIAR CAMPOS{
 
 
@@ -71,11 +81,12 @@ VERFICADO -> {
     }
 }
 
-TODO -> {
-
+6- TODO -> {
+    SINAIS      [NAME SEARCH]   [100%]
+    MARCA       [NAME SEARCH]   [100%]
 }
 
-DONE -> {
+7- DONE -> {
     PRODUTOR    [CRIAR]         [100%]
     PRODUTOR    [ATUALIZAR]     [100%]
     PRODUTOR    [VISUALIZAR]    [100%]
@@ -97,4 +108,49 @@ DONE -> {
     LOCALIDADE  [CRIAR]         [100%]
     LOCALIDADE  [DELETAR]       [100%]
     LOCALIDADES [VISUALIZAR]    [100%]
+}
+
+8- FILES CHANGED {
+            DataBase.class.php
+            index.php
+            init.php
+            pmb_cabecalho.php
+            pmb_cms.php
+            pmb_conecta.php
+            pmb_localidade.php
+            pmb_localidade_editar.php
+            pmb_localidade_excluir.php
+            pmb_localidade_salvar.php
+            pmb_login.php
+            pmb_logoff.php
+            pmb_marca.php
+            pmb_marca_detalhe.php
+            pmb_marca_editar.php
+            pmb_marca_excluir.php
+            pmb_marca_salvar.php
+            pmb_produtor.php
+            pmb_produtor_detalhe.php
+            pmb_produtor_editar.php
+            pmb_produtor_excluir.php
+            pmb_produtor_salvar.php
+            pmb_rodape.php
+            pmb_sinal.php
+            pmb_sinal_detalhe.php
+            pmb_sinal_editar.php
+            pmb_sinal_excluir.php
+            pmb_sinal_salvar.php
+            seguranca.php
+            pmb_ver_cabecalho.php
+            pmb_ver_marca.php
+            pmb_ver_sinal.php
+}
+
+9- FILES TO CHANGE {
+             pmb_acessos.php
+             pmb_cms_certificado.php
+             pmb_cms_senha.php
+             pmb_cms_senha_alterar.php
+             pmb_cms_ver_certificado_valida.php
+             pmb_cms_ver_marca_detalhe.php
+             pmb_cms_ver_sinal_detalhe.php
 }

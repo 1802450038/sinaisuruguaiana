@@ -49,12 +49,12 @@ switch ($_GET['erro']) {
 ?>
 
 <script>
-    	function valida_exc_marca() {
-		console.log("tadala felas");
-		var retorno = confirm('Confirma exclusao do marca?');
+    function valida_exc_marca() {
+        console.log("tadala felas");
+        var retorno = confirm('Confirma exclusao do marca?');
 
-		return (retorno);
-	}
+        return (retorno);
+    }
 
     function acao(posicao) {
         formulario.action = 'pmb_marca.php?posicao=' + posicao;
@@ -90,7 +90,7 @@ switch ($_GET['erro']) {
                                 echo "<option value='' selected>Todas</option>";
                                 while ($linha = $db->fetchArray($sql)) {
 
-                                    if (isset($_POST['localidade'])) {
+                                    if (isset($_POST['localidade']) && $_POST['localidade'] > 0) {
                                         if ($linha['idlocalidade'] == $_POST['localidade']) {
                                             echo "<option value=" . $linha['idlocalidade'] . " selected>" . $linha['localidade'] . "</option>";
                                         } else {
@@ -110,24 +110,16 @@ switch ($_GET['erro']) {
                     </div>
                     <div class="form-item">
                         <div class="form-item-input">
-                            <label class="form-item-input-label" for="produtor">Selecione o Produtor</label>
-                            <select name="produtor" id="produtor">
-                                <?php
-                                // require_once('pmb_conecta.php');
-                                $sql = "select idprodutor, nome from cms_produtores order by nome";
-                                $sql = $db->query($sql);
-                                echo "<option value='' selected>Todos</option>";
-                                while ($linha = $db->fetchArray($sql)) {
-                                    if (isset($_POST['produtor']))
-                                        if ($linha['idprodutor'] == $_POST['produtor'])
-                                            echo "<option value=" . $linha['idprodutor'] . " selected>" . $linha['nome'] . "</option>";
-                                        else
-                                            echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
-                                    else
-                                        echo "<option value=" . $linha['idprodutor'] . ">" . $linha['nome'] . "</option>";
-                                }
-                                ?>
-                            </select>
+                            <label class="form-item-input-label" for="nome">Nome Produtor</label>
+                            <?php
+                            if (isset($_POST['nome']) && strlen($_POST['nome']) > 0) {
+                                echo ("<input name='nome' id='nome' type='text' class='form-item-input-text' value='" . $_POST['nome'] . "'>");
+                            } else if (isset($_GET['search']) && strlen($_GET['search']) > 0 && $_GET['search'] == "p.nome") {
+                                echo ("<input name='nome' id='nome' type='text' class='form-item-input-text' value='" . $_GET['term'] . "'>");
+                            } else {
+                                echo ("<input name='nome' id='nome' type='text' class='form-item-input-text'>");
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="form-item">
@@ -136,8 +128,6 @@ switch ($_GET['erro']) {
                             <select name="quantity" id="quantity">
 
                                 <?php
-                                // echo "<option value='10' selected>10</option>";
-
                                 if (isset($_POST['quantity'])) {
                                     echo "<option value=" . $_POST['quantity'] . " selected>" . $_POST['quantity'] . "</option>";
                                 } else if (isset($_GET['quantity'])) {
@@ -148,6 +138,7 @@ switch ($_GET['erro']) {
                                                 <option value='21'>21</option>
                                                 <option value='51'>51</option>
                                                 <option value='102'>102</option>
+                                                <option value='1002'>1002</option>
                                             ";
                                 ?>
                             </select>
@@ -220,45 +211,79 @@ switch ($_GET['erro']) {
                 }
 
 
-
                 $search = "m.idmarca";
                 $term = "";
 
 
 
 
-                if ($_POST['localidade']) {
-                    $search = "l.idlocalidade";
+
+                if (strlen($_POST['localidade']) > 0) {
                     $term =  (int)$_POST['localidade'];
+                    $search = "l.idlocalidade";
+                    $localidade = $term;
+                } else if (strlen($_GET['localidade']) > 0) {
+                    $term =  (int)$_GET['localidade'];
+                    $search = "l.idlocalidade";
+                    $localidade = $term;
                 }
 
-                if ($_POST['produtor']) {
-                    $search = "m.idprodutor";
-                    $term =  (int)$_POST['produtor'];
+                if ($_POST['nome']) {
+                    $search = "p.nome";
+                    $term =  $_POST['nome'];
+                } else if (isset($_GET['search']) && strlen($_GET['search']) > 0 && $_GET['search'] == "p.nome") {
+                    $search = $_GET['search'];
+                    $term = $_GET['term'];
                 }
 
 
 
                 $start = ($page - 1) * $itemsPerPage;
 
+                if ($_POST['nome'] || isset($_GET['search']) && strlen($_GET['search']) > 0 && $_GET['search'] == "p.nome") {
+                    $query = "SELECT SQL_CALC_FOUND_ROWS
+                    m.idmarca, m.observacao, 
+                    l.localidade, 
+                    p.nome, 
+                    ps.nome AS nomesecundario,
+                    pt.nome AS nometerciario,
+                    pq.nome AS nomequaternario,
+                    m.numero, 
+                    m.caminho 
+                    FROM cms_marcas m
+                    LEFT JOIN cms_localidades l ON l.idlocalidade = m.idlocalidade
+                    LEFT JOIN cms_produtores p ON p.idprodutor = m.idprodutor
+                    LEFT JOIN cms_produtores ps ON ps.idprodutor = m.idprodutorsecundario
+                    LEFT JOIN cms_produtores pt ON pt.idprodutor = m.idprodutorterciario
+                    LEFT JOIN cms_produtores pq ON pq.idprodutor = m.idprodutorquaternario
+                    WHERE 
+                    p.nome LIKE     '$term%' OR 
+                    ps.nome LIKE    '$term%' OR
+                    pt.nome LIKE    '$term%' OR
+                    pq.nome LIKE    '$term%'
+                    ORDER BY p.nome, ps.nome, pt.nome, pq.nome, m.numero LIMIT $start, $itemsPerPage";
+                } else {
+                    $query = "SELECT SQL_CALC_FOUND_ROWS 
+                    m.idmarca, m.observacao, 
+                    l.localidade, 
+                    p.nome, 
+                    ps.nome AS nomesecundario,
+                    pt.nome AS nometerciario,
+                    pq.nome AS nomequaternario,
+                    m.numero, 
+                    m.caminho 
+                    FROM cms_marcas m
+                    LEFT JOIN cms_localidades l ON l.idlocalidade = m.idlocalidade
+                    LEFT JOIN cms_produtores p ON p.idprodutor = m.idprodutor
+                    LEFT JOIN cms_produtores ps ON ps.idprodutor = m.idprodutorsecundario
+                    LEFT JOIN cms_produtores pt ON pt.idprodutor = m.idprodutorterciario
+                    LEFT JOIN cms_produtores pq ON pq.idprodutor = m.idprodutorquaternario
+                    WHERE $search LIKE '$term%' ORDER BY p.nome, m.idmarca LIMIT $start, $itemsPerPage";
+                }
 
-                $query = "SELECT SQL_CALC_FOUND_ROWS 
-                        m.idmarca, m.observacao, 
-                        l.localidade, 
-                        p.nome, 
-                        ps.nome AS nomesecundario,
-                        pt.nome AS nometerciario,
-                        pq.nome AS nomequaternario,
-                        m.numero, 
-                        m.caminho 
-                        FROM cms_marcas m
-                        LEFT JOIN cms_localidades l ON l.idlocalidade = m.idlocalidade
-                        LEFT JOIN cms_produtores p ON p.idprodutor = m.idprodutor
-                        LEFT JOIN cms_produtores ps ON ps.idprodutor = m.idprodutorsecundario
-                        LEFT JOIN cms_produtores pt ON pt.idprodutor = m.idprodutorterciario
-                        LEFT JOIN cms_produtores pq ON pq.idprodutor = m.idprodutorquaternario
-                        WHERE $search LIKE '%$term%' ORDER BY p.nome, m.numero LIMIT $start, $itemsPerPage";
 
+
+ 
                 $rows = "SELECT FOUND_ROWS() AS nrtotal;";
 
                 $query = $db->query($query);
@@ -287,9 +312,6 @@ switch ($_GET['erro']) {
                 }
 
                 while ($linha = $db->fetchArray($query)) {
-
-                    // var_dump($linha);
-                    // var_dump($linha['nome']);
                     $idmarca = $linha['idmarca'];
                     $localidade = $linha['localidade'];
                     $produtor = $linha['nome'];
@@ -313,10 +335,11 @@ switch ($_GET['erro']) {
                                                 {$idmarca}
                                             </div>
                                         </div>
+                                        
                                         <div class='card-items'>
                                             <div class='item' style='height: 100px;'>";
-                                                if($produtorsecundario){
-                                                    echo "
+                    if ($produtorsecundario) {
+                        echo "
                                                         <div class='item-name'>Produtores</div>
                                                         <div class='item-value prod' style='line-height: 18px; padding-bottom: 10px;'>{$produtor}<br>
                                                                                     {$produtorsecundario}<br>
@@ -324,13 +347,15 @@ switch ($_GET['erro']) {
                                                                                     {$produtorquaternario}
                                                                                     </div>
                                                     ";
-                                                } else {
-                                                    echo "
+                    } else {
+                        echo "
                                                         <div class='item-name'>Produtor</div>
                                                         <div class='item-value prod'>{$produtor}</div>";
-                                                }
-                                                echo "
+                    }
+                    echo "
                                             </div>
+
+
 
                                             <div class='item'>
                                                 <div class='item-name'>Localidade</div>
@@ -357,13 +382,26 @@ switch ($_GET['erro']) {
         <div class="paginator ">
             <div class="paginator-row ">
                 <?php
-                for ($j = $page - 2; $j < ($page + 5); $j++) {
-                    if ($links[$j]['text'] > 0) {
-                        echo "
-                                    <a href='{$links[$j]['link']}' class='paginatior-item '>{$links[$j]['text']}</a>
-                                    ";
+
+
+                echo "<a href='{$links[0]['link']}' class='paginatior-item'><<</a>";
+
+                if ($links[$page - 2]) {
+                    $genLink = "<a href='{$links[$page - 2]['link']}' class='paginatior-item' style='color:grey; border-color: grey;'>{$links[$page - 2]['text']}</a>";
+                    echo $genLink;
+                }
+
+                for ($j = $page; $j < ($page + 4); $j++) {
+                    if ($links[$j - 1]) {
+
+                        $genLink = "<a href='{$links[$j - 1]['link']}' class='paginatior-item'>{$links[$j - 1]['text']}</a>";
+                        echo $genLink;
                     }
                 }
+
+
+
+                echo "<a href='{$links[$pages - 1]['link']}' class='paginatior-item'>>></a>";
                 ?>
             </div>
         </div>

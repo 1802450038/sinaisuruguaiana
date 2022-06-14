@@ -2,7 +2,7 @@
 if(file_exists("init.php")){
         require_once "init.php";
 } else {
-        die("Arquivo de init n�o encontrado");
+        die("Arquivo de init n�o encontrado");
 }
 require_once('pmb_conecta.php');
 require_once "seguranca.php";
@@ -34,36 +34,25 @@ switch ($_GET['erro']) {
           </script>';
         break;
 }
+?>
+<div class="body">
 
-echo"
-<table border='0' width='650'>
-    <tr>
-        <td colspan='6' align='center' class='td-titulo1'>Acesso R&aacute;pido</th>
-    <tr><td></td></tr>
-    <tr>
-	<td>
-	    <a href='pmb_cms_localidade_editar.php'>Cadastrar nova Localidade</a>
-	</td>
-    </tr>
-    <tr>
-	<td>
-	    <br>
-	    <a href='pmb_cms_produtor_editar.php'>Cadastrar novo Produtor</a>
-	</td>
-    </tr>
-    <tr>
-	<td>
-	    <br>
-	    <a href='pmb_cms_marca_editar.php'>Cadastrar nova Marca</a>
-	</td>
-    </tr>
-    <tr>
-	<td>
-	    <br>
-	    <a href='pmb_cms_sinal_editar.php'>Cadastrar novo Sinal</a>
-	</td>
-    </tr>
-</table>";
 
+<div class="body-content">
+            <div class="search-bar">
+                <div class="content-home">
+                    <div class="title">
+                        <h2>Pagina marcas e sinais</h2>
+                    </div>
+                    <div class="message">
+                        <p>Seja bem vindo a pagina de marcas e sinais da cidade de uruguaiana !</p>
+                        <p>Aqui é possivel consultar, editar, excluir, realizar o cadastro de 
+                            MARCAS e SINAIS e consultar a validade dos certificados basta selecionar a opção desejada no MENU</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+<?php
     require_once ('pmb_rodape.php');
 ?>

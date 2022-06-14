@@ -13,31 +13,24 @@ if (!isset($_SESSION["login"]))
     header("Location: index.php?erro=1");
 
 $localidade = $_POST['localidade'];
+
 $produtor = $_POST['produtor'];
-$numero = $_POST['numero'];
+
+$produtorsecundario = $_POST['produtorsecundario'];
+
+$produtorterciario = $_POST['produtorterciario'];
+
+$produtorquaternario = $_POST['produtorquaternario'];
+
 $observacao = $_POST['observacao'];
 
-$ch_numero = $_POST['ch_numero'];
+$numero = $_POST['numero'];
 
-if ($ch_numero == "on")
-    $ch_numero = "s";
+
+if ($numero == "on")
+    $numero = 1;
 else
-    $ch_numero = "n";
-
-$ch_letra = $_POST['ch_letra'];
-
-if ($ch_letra == "on")
-    $ch_letra = "s";
-else
-    $ch_letra = "n";
-
-$ch_figura = $_POST['ch_figura'];
-
-if ($ch_figura == "on")
-    $ch_figura = "s";
-else
-    $ch_figura = "n";
-
+    $numero = 0;
 
 
 if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {
@@ -86,8 +79,8 @@ if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {
                         $numero = $db->fetchArray($sql);
                         $numero = $numero['max'] + 1;
 
-                        $sql = "insert into cms_sinais (idlocalidade, idprodutor, observacao, numero, caminho, data_cadastro) 
-        	        values ('$localidade', '$produtor', '$observacao', '$numero', '$caminho', NOW())";
+                        $sql = "insert into cms_sinais (idlocalidade, idprodutor, idprodutorsecundario, idprodutorterciario, idprodutorquaternario, observacao, numero, caminho, data_cadastro) 
+        	        values ('$localidade', '$produtor', '$produtorsecundario', '$produtorterciario', '$produtorquaternario', '$observacao', '$numero', '$caminho', NOW())";
 
                         if ($sql = $db->query($sql)) {
                             header("Location: pmb_sinal.php?erro=1");
@@ -100,7 +93,7 @@ if ((!isset($_POST['id'])) || ($_POST['id'] == '')) {
         }
 } else {
     $id = (int)$_POST['id'];
-    $sql = "update cms_sinais set idlocalidade = '$localidade', idprodutor = '$produtor', observacao = '$observacao', numero = '$numero' where idsinal = $id";
+    $sql = "update cms_sinais set idlocalidade = '$localidade', idprodutor = '$produtor', idprodutorsecundario = '$produtorsecundario', idprodutorterciario = '$produtorterciario', idprodutorquaternario = '$produtorquaternario', observacao = '$observacao', numero = '$numero' where idsinal = $id";
 
     if ($sql = $db->query($sql))
         header("Location: pmb_sinal.php?erro=1");

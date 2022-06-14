@@ -1,0 +1,15 @@
+.content-home {
+    /* background-color: red; */
+    padding: 0px 30px;
+}
+
+.content-home .title {
+    color: rgb(103, 179, 103);
+}
+
+.content-home .message {
+    color: rgb(81, 142, 81);
+    line-height: 25px;
+    letter-spacing: 1.2px;
+    
+}
