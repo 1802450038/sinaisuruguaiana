@@ -151,6 +151,8 @@ VERFICADO -> {
              pmb_cms_senha.php
              pmb_cms_senha_alterar.php
              pmb_cms_ver_certificado_valida.php
+
+             
              pmb_cms_ver_marca_detalhe.php
              pmb_cms_ver_sinal_detalhe.php
 }

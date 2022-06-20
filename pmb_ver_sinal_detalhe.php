@@ -1,18 +1,7 @@
 <?php
-require_once('pmb_cabecalho.php');
-
-
+require_once ('pmb_ver_cabecalho.php');
+$idsinal = (int)$_GET['idsinal'];
 ?>
-
-<script>
-	function valida_exc_sinal() {
-		console.log("tadala felas");
-		var retorno = confirm('Confirma exclusao do sinal?');
-
-		return (retorno);
-	}
-
-</script>
 
 
 <div class="body">
@@ -171,19 +160,6 @@ require_once('pmb_cabecalho.php');
                             </div>
                             <div class="profile-image">
                             <img src="<?php echo $caminho?>" alt="" srcset="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-bottom">
-                        <div class="profile-bottom-title">
-                            <h2>Ações</h2>
-                        </div>
-                        <div class="profile-actions">
-
-                            <div class="profile-actions-row">
-                                <a href="/pmb_sinal.php" class="back"><i class="fas fa-arrow-left"></i></a>
-                                <a href="/pmb_sinal_editar.php?id=<?php echo $idsinal?>" class="edit"><i class="fas fa-edit"></i></a>
-                                <a href="/pmb_sinal_excluir.php?id=<?php echo $idsinal?>" class="delete" onClick='return valida_exc_sinal()'><i class="fas fa-trash-can"></i></a>
                             </div>
                         </div>
                     </div>

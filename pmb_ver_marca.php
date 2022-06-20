@@ -262,7 +262,7 @@ require_once ('pmb_ver_cabecalho.php');
 
                     echo "<div class='card'>
                                     <div class='card-img'>
-                                        <a href= 'pmb_marca_detalhe.php?idmarca=$idmarca'>
+                                        <a href= 'pmb_ver_marca_detalhe.php?idmarca=$idmarca'>
                                             <img src='{$caminho}' alt='' srcset=''>
                                         </a>
                                     </div>

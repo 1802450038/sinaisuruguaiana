@@ -1,45 +1,39 @@
 <?php
-require_once('pmb_cabecalho.php');
-
-
+require_once('pmb_ver_cabecalho.php');
+$idmarca = (int)$_GET['idmarca'];
 ?>
-
-<script>
-	function valida_exc_sinal() {
-		console.log("tadala felas");
-		var retorno = confirm('Confirma exclusao do sinal?');
-
-		return (retorno);
-	}
 
 </script>
 
 
 <div class="body">
     <?php
-    $idsinal = $_GET['idsinal'];
+    $idmarca = (int)($_GET['idmarca']);
 
     $query = "SELECT 
     l.localidade, 
-    p.nome,
+    p.nome, 
     ps.nome AS nomesecundario,
     pt.nome AS nometerciario,
-    pq.nome AS nomequaternario, 
-    s.numero, 
-    s.observacao, 
-    s.caminho, 
-    s.data_cadastro,
-    s.data_validade
-	FROM cms_sinais s
-	LEFT JOIN cms_localidades l ON l.idlocalidade = s.idlocalidade
-	LEFT JOIN cms_produtores p ON p.idprodutor = s.idprodutor
-    LEFT JOIN cms_produtores ps ON ps.idprodutor = s.idprodutorsecundario
-    LEFT JOIN cms_produtores pt ON pt.idprodutor = s.idprodutorterciario
-    LEFT JOIN cms_produtores pq ON pq.idprodutor = s.idprodutorquaternario
-	WHERE idsinal = " . $idsinal;
+    pq.nome AS nomequaternario,
+    m.numero,
+    m.observacao, 
+    m.caminho, 
+    m.data_cadastro,
+    m.data_atualizacao,
+    m.data_validade
+
+	FROM cms_marcas m
+	LEFT JOIN cms_localidades l ON l.idlocalidade = m.idlocalidade
+    LEFT JOIN cms_produtores p ON p.idprodutor = m.idprodutor
+    LEFT JOIN cms_produtores ps ON ps.idprodutor = m.idprodutorsecundario
+    LEFT JOIN cms_produtores pt ON pt.idprodutor = m.idprodutorterciario
+    LEFT JOIN cms_produtores pq ON pq.idprodutor = m.idprodutorquaternario
+	WHERE idmarca = " . $idmarca;
 
     $sql = $db->query($query);
     $linha = $db->fetchArray($sql);
+
     $localidade = $linha['localidade'];
     $nome = $linha['nome'];
     $produtorsecundario = $linha['nomesecundario'];
@@ -51,11 +45,10 @@ require_once('pmb_cabecalho.php');
     $data_cadastro = $linha['data_cadastro'];
     $data_atualizacao = $linha['data_atualizacao'];
     $data_validade = $linha['data_validade'];
-
     ?>
 
     <div class="body-title">
-        <h2>Sinal</h2>
+        <h2>Marca</h2>
     </div>
     <div class="body-content">
         <div class="search-bar">
@@ -66,13 +59,13 @@ require_once('pmb_cabecalho.php');
                             <img src="<?php echo $caminho ?>" alt="" srcset="">
                         </div>
                         <div class="profile-name">
-                            <h1><?php echo "$idsinal" ?></h1>
+                            <h1><?php echo "$idmarca" ?></h1>
                         </div>
                     </div>
                     <div class="profile-middle">
                         <div class="profile-item-row profile-values">
                             <div class="profile-items-title">
-                                <h2>Dados do Sinal</h2>
+                                <h2>Dados da Marca</h2>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-item">
@@ -84,8 +77,8 @@ require_once('pmb_cabecalho.php');
                                     </div>
                                 </div>
                                 <?php
-                                    if($produtorsecundario){
-                                        echo "
+                                if ($produtorsecundario) {
+                                    echo "
                                         <div class='profile-item'>
                                         <div class='profile-item-title'>
                                             <h4>Produtor secundário</h4>
@@ -95,9 +88,9 @@ require_once('pmb_cabecalho.php');
                                         </div>
                                     </div>
                                         ";
-                                    }
-                                    if($produtorterciario){
-                                        echo "
+                                }
+                                if ($produtorterciario) {
+                                    echo "
                                         <div class='profile-item'>
                                         <div class='profile-item-title'>
                                             <h4>Produtor terciário</h4>
@@ -107,9 +100,9 @@ require_once('pmb_cabecalho.php');
                                         </div>
                                     </div>
                                         ";
-                                    }
-                                    if($produtorquaternario){
-                                        echo "
+                                }
+                                if ($produtorquaternario) {
+                                    echo "
                                         <div class='profile-item'>
                                         <div class='profile-item-title'>
                                             <h4>Produtor quaternário</h4>
@@ -119,9 +112,10 @@ require_once('pmb_cabecalho.php');
                                         </div>
                                     </div>
                                         ";
-                                    }
+                                }
 
                                 ?>
+
                                 <div class="profile-item">
                                     <div class="profile-item-title">
                                         <h4>Localidade</h4>
@@ -156,7 +150,7 @@ require_once('pmb_cabecalho.php');
                                 </div>
                                 <div class="profile-item">
                                     <div class="profile-item-title">
-                                        <h4>Valido  até</h4>
+                                        <h4>Valido até</h4>
                                     </div>
                                     <div class="profile-item-value">
                                         <h4><?php echo "$data_validade" ?></h4>
@@ -170,20 +164,7 @@ require_once('pmb_cabecalho.php');
                                 <h2>Imagem</h2>
                             </div>
                             <div class="profile-image">
-                            <img src="<?php echo $caminho?>" alt="" srcset="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-bottom">
-                        <div class="profile-bottom-title">
-                            <h2>Ações</h2>
-                        </div>
-                        <div class="profile-actions">
-
-                            <div class="profile-actions-row">
-                                <a href="/pmb_sinal.php" class="back"><i class="fas fa-arrow-left"></i></a>
-                                <a href="/pmb_sinal_editar.php?id=<?php echo $idsinal?>" class="edit"><i class="fas fa-edit"></i></a>
-                                <a href="/pmb_sinal_excluir.php?id=<?php echo $idsinal?>" class="delete" onClick='return valida_exc_sinal()'><i class="fas fa-trash-can"></i></a>
+                                <img src="<?php echo $caminho ?>" alt="" srcset="">
                             </div>
                         </div>
                     </div>
@@ -192,7 +173,6 @@ require_once('pmb_cabecalho.php');
         </div>
     </div>
 </div>
-
 
 <?php
 require_once('pmb_rodape.php');

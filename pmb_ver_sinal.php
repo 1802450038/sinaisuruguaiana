@@ -101,9 +101,6 @@ require_once ('pmb_ver_cabecalho.php');
 		<div class='content-area'>
 			<div class='card-row'>
 				<?php
-				require_once('pmb_conecta.php');
-
-
 				$page = (isset($_GET['page']) ? (int)$_GET['page'] : 1);
 
 				$itemsPerPage =  21;
@@ -226,7 +223,7 @@ require_once ('pmb_ver_cabecalho.php');
 
 					echo "<div class='card'>
                                     <div class='card-img'>
-                                        <a href= 'pmb_sinal_detalhe.php?idsinal=$idsinal'>
+                                        <a href= 'pmb_ver_sinal_detalhe.php?idsinal=$idsinal'>
                                             <img src='{$caminho}' alt='' srcset=''>
                                         </a>
                                     </div>

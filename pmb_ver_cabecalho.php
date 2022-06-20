@@ -7,8 +7,6 @@ if (file_exists("init.php")) {
 require_once('pmb_conecta.php');
 require_once "seguranca.php";
 
-$dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["dados"]);
-
 
 ?>
 
