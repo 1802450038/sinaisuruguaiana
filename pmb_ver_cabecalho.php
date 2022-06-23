@@ -5,7 +5,6 @@ if (file_exists("init.php")) {
     die("Arquivo de init não encontrado");
 }
 require_once('pmb_conecta.php');
-require_once "seguranca.php";
 
 
 ?>

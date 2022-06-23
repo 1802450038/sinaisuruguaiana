@@ -19,7 +19,7 @@ require_once('pmb_cabecalho.php');
 
     $query = "SELECT 
     l.localidade, 
-    p.nome, 
+    p.nome,
     ps.nome AS nomesecundario,
     pt.nome AS nometerciario,
     pq.nome AS nomequaternario,

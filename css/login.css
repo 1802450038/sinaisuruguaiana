@@ -13,6 +13,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    justify-self: center;
     margin-top: -10vh;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -108,7 +109,7 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    font-size: 8pt;
+    font-size: 10pt;
     padding: 15px 0px;
     row-gap: 10px;
 }
@@ -120,5 +121,5 @@ body{
 }
 
 .form-extra a:hover {
-    font-size: 9pt;
+    font-size: 12pt;
 }

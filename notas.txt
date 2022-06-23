@@ -143,16 +143,14 @@ VERFICADO -> {
             pmb_ver_cabecalho.php
             pmb_ver_marca.php
             pmb_ver_sinal.php
+            pmb_cms_senha.php
+            pmb_cms_senha_alterar.php
+            pmb_cms_ver_marca_detalhe.php
+            pmb_cms_ver_sinal_detalhe.php
 }
 
 9- FILES TO CHANGE {
-             pmb_acessos.php
              pmb_cms_certificado.php
-             pmb_cms_senha.php
-             pmb_cms_senha_alterar.php
              pmb_cms_ver_certificado_valida.php
 
-             
-             pmb_cms_ver_marca_detalhe.php
-             pmb_cms_ver_sinal_detalhe.php
 }

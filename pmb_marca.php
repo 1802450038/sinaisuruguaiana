@@ -370,7 +370,7 @@ switch ($_GET['erro']) {
                                         <div class='card-actions'>
                                             <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_marca_editar.php?id={$idmarca}' title='Editar'><i class='fas fa-pen-to-square'></i><span>Editar</span></a></div>
                                             <div class='action' style='border-right: 1px solid  rgb(130, 196, 130);'><a href='pmb_marca_excluir.php?id={$idmarca}' title='Excluir' onClick='return valida_exc_marca()'><i class='fas fa-trash-can '></i><span>Excluir</span></a></div>
-                                            <div class='action '><a href='pmb_marca_certificado.php?t=m&id={$idmarca}' title='Certificado'><i class='fas fa-certificate '></i><span>Certificado</span></a></div>
+                                            <div class='action '><a href='pmb_certificado_marca_preview.php?t=m&id={$idmarca}' title='Certificado'><i class='fas fa-certificate '></i><span>Certificado</span></a></div>
                                         </div>
                                     </div>
                                 </div>";
