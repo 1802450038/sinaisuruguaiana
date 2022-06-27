@@ -44,25 +44,25 @@ $dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["
             </div>
             <ul>
                 <li>
-                    <a href="pmb_cms.php">INÍCIO</a>
+                    <a href="pmb_cms.php"><span>INÍCIO</span> <i class="nav-ico fas fa-house-user "> </i></a>
                 </li>
                 <li>
-                    <a href="pmb_marca.php">MARCAS</a>
+                    <a href="pmb_marca.php"><span>MARCAS</span> <i class="nav-ico fas fas fa-registered"> </i> </a>
                 </li>
                 <li>
-                    <a href="pmb_sinal.php">SINAIS</a>
+                    <a href="pmb_sinal.php"><span>SINAIS</span> <i class="nav-ico fas fas fa-signature"> </i> </a>
                 </li>
                 <li>
-                    <a href="pmb_produtor.php">PRODUTORES</a>
+                    <a href="pmb_produtor.php"><span>PRODUTORES</span> <i class="nav-ico fas fas fa-users-between-lines"> </i> </a>
                 </li>
                 <li>
-                    <a href="pmb_localidade.php">LOCALIDADES</a>
+                    <a href="pmb_localidade.php"><span>LOCALIDADES</span> <i class="nav-ico fas fas fa-location-dot"> </i></a>
                 </li>
                 <li>
-                    <a href="pmb_senha.php">ALTERAR SENHA</a>
+                    <a href="pmb_senha.php"><span>ALTERAR SENHA</span> <i class="nav-ico fab fa-expeditedssl"></i></a>
                 </li>
                 <li>
-                    <a href="pmb_logoff.php">SAIR</a>
+                    <a href="pmb_logoff.php"><span>SAIR</span> <i class="nav-ico fas fa-door-open"> </i> </a>
                 </li>
             </ul>
         </div>

@@ -11,10 +11,10 @@ $dados = isset($_SESSION["dados"]) ? $_SESSION["dados"] : unserialize($_COOKIE["
 if (!isset($_GET['id']))
     header("Location: index.php");
 
-$id = anti_injection($_GET['id']);
-$tipo = anti_injection_s($_GET['t']);
+$id = (int)($_GET['id']);
+$tipo = (int)($_GET['t']);
 
-ob_start();
+// ob_start();
 
 if ($tipo == "m")
     $sql = "select l.localidade, p.nome, p.cpf, m.numero, m.caminho
@@ -105,20 +105,20 @@ $sql = "select max(sequencia) from cms_certificados where data_certificado = '$a
 //$result = pg_query($conect, $sql);
 //$linha = pg_fetch_array($result);
 
-$sql = $db->query($sql);
-$linha = $db->fetchArray($sql);
+// $sql = $db->query($sql);
+// $linha = $db->fetchArray($sql);
 
-$sequencia = $linha['sequencia'] + 1;
+// $sequencia = $linha['sequencia'] + 1;
 
-$local = str_replace("'", "\'", $localidade);
-$produtor = str_replace("'", "\'", $nome);
+// $local = str_replace("'", "\'", $localidade);
+// $produtor = str_replace("'", "\'", $nome);
 
-$sql = "insert into cms_certificados (localidade, produtor, cpf, tipo, data_certificado, hora_certificado, sequencia, numero, caminho)
-    values ('$local', '$produtor', '$cpf', '$tipo', '$ano-$mes-$dia', '$hora:$minuto:$segundo', $sequencia, $numero, '$caminho')";
+// $sql = "insert into cms_certificados (localidade, produtor, cpf, tipo, data_certificado, hora_certificado, sequencia, numero, caminho)
+//     values ('$local', '$produtor', '$cpf', '$tipo', '$ano-$mes-$dia', '$hora:$minuto:$segundo', $sequencia, $numero, '$caminho')";
 
 //pg_query($conect, $sql);
 
-$sql = $db->query($sql);
+// $sql = $db->query($sql);
 
 
 //gera o pdf

@@ -21,7 +21,7 @@ body{
     background-color: white;
     border-radius: 5px;
     padding: 30px 20px;
-    height: 320px;
+    height: 340px;
     width: 240px;
     display: flex;
     flex-direction: column;
@@ -113,12 +113,36 @@ body{
     row-gap: 10px;
 }
 
+
+
 .form-extra a {
     color: rgb(143, 143, 143);
     text-decoration: none;
     transition: all .3s ease-in-out;
 }
 
-.form-extra a:hover {
-    font-size: 9pt;
+
+.find-public {
+    /* background-color: red; */
+    border: 1px solid rgb(130, 196, 130);
+    padding: 8px 5px;
+    font-size: 10pt;
+    border-radius: 5px;
+    color: rgb(103, 179, 103) !important;
+    text-transform: uppercase;
+}
+
+.find-public:hover {
+    color: white !important;
+    background-color: rgb(103, 179, 103);
+}
+
+.about {
+    font-size: 10pt !important;
+    color: rgb(143, 143, 143);
+}
+
+.about:hover {
+    color: rgb(103, 179, 103);
+    font-weight: bold;
 }

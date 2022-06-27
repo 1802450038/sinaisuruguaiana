@@ -80,6 +80,7 @@ $dateNow = date("d") . "/ " .  $mesext[date('m')] . "/ " . date("Y");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/certificado.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
     <title>Certificado Marca</title>
 </head>
 
@@ -133,7 +134,7 @@ $dateNow = date("d") . "/ " .  $mesext[date('m')] . "/ " . date("Y");
                     </div>
                     <div class="certificado-content-item">
                         <div class="certificado-content-item-title">Emitido em: </div>
-                        <div class="certificado-content-item-value">Uruguaiana, <?php echo "$dateNow";?></div>
+                        <div class="certificado-content-item-value">Uruguaiana, <?php echo "$dateNow"; ?></div>
                     </div>
                     <div class="certificado-signatures">
                         <div class="certificado-signatures-item">
@@ -149,6 +150,11 @@ $dateNow = date("d") . "/ " .  $mesext[date('m')] . "/ " . date("Y");
             </div>
         </div>
     </div>
+    <div class="certificado-options">
+        <button class="save-to-pdf" onclick="location.href='pmb_gen_marca_certificado.php?id=<?php echo $idmarca?>'"> <i class="fas fa-file-pdf"></i><span>Salvar</span></button>
+        <button class="back-page" onclick="location.href='pmb_marca.php'"> <i class="fas fa-reply"></i><span>Voltar</span></button>
+    </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js " integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
 
 </html>

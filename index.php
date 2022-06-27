@@ -50,16 +50,6 @@ if ($_GET){
 	}
 }
 
-
-
-
-// //se o usu�rio n�o estiver bloqueado (tentativas maior que 10)
-// if($resultado){
-// 		$dados           = array();
-// 		$dados["login"]   = $login;
-// 		$_SESSION['login'] = $dados["login"];
-// 		$dados["senha"] = $senha;                       
-// 		$_SESSION["dados"] = $dados; 
 ?>
 
 
@@ -70,6 +60,7 @@ if ($_GET){
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
 	<title>Login</title>
 </head>
 <body>
@@ -97,11 +88,12 @@ if ($_GET){
 
             </form>
             <div class="form-extra">
-                <a href="pmb_ver_marca.php">Consulta sem Login</a>
-                <a href="#">Sobre</a>
+                <a class="find-public" href="pmb_ver_marca.php">Consulta sem Login</a>
+                <a class="about" href="#">Sobre</a>
             </div>
         </div>
     </div>
 
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js " integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
 </html>
